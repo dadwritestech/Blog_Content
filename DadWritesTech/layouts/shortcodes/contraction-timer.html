@@ -13,13 +13,7 @@
         color: #333;
     }
 
-    .contraction-timer-container h2 {
-        text-align: center;
-        color: #333 !important;
-        margin-top: 0;
-        margin-bottom: 1em;
-    }
-
+    .contraction-timer-container h2,
     .contraction-timer-container h3 {
         text-align: center;
         color: #333 !important;
@@ -29,7 +23,7 @@
 
     .timer-controls {
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: 15px;
     }
 
     .timer-display p {
@@ -44,13 +38,96 @@
         margin-left: 5px;
     }
 
+    /* --- Analysis Section --- */
+    .analysis-section {
+        margin-bottom: 25px;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+        text-align: center;
+    }
+
+    #summarySection {
+        font-size: 0.95em;
+        margin-bottom: 10px;
+    }
+
+    #summarySection p {
+        margin: 4px 0;
+        color: #555;
+    }
+
+    #summarySection span {
+        font-weight: bold;
+        color: #333;
+        margin-left: 5px;
+    }
+
+    #rule511Section {
+        font-size: 0.95em;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid #eee;
+    }
+
+    #rule511Section p {
+        margin: 4px 0;
+        color: #555;
+    }
+
+    #rule511Status {
+        font-weight: bold;
+        margin-left: 5px;
+    }
+
+    #rule511Status.not-met {
+        color: #6c757d;
+    }
+
+    #rule511Status.possible {
+        color: #ffc107;
+    }
+
+    #rule511Description {
+        font-size: 0.8em;
+        color: #888;
+        margin-top: 5px;
+        font-style: italic;
+    }
+
+    #trendSection {
+        font-size: 0.9em;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid #eee;
+    }
+
+    #trendSection p {
+        margin: 4px 0;
+        color: #555;
+    }
+
+    #durationTrend,
+    #frequencyTrend {
+        font-weight: bold;
+        color: #333;
+        margin-left: 3px;
+    }
+
     /* --- Buttons --- */
+    .button-section {
+        text-align: center;
+        margin-top: 30px;
+    }
+
     #timerButton,
     #saveHistoryButton,
     #clearHistoryButton,
     #exportHistoryButton,
-    #importHistoryButton {
-        /* Added new button IDs */
+    #importHistoryButton,
+    #confirmEntryButton,
+    #exportCSVButton,
+    #cancelEditButton {
         padding: 10px 20px;
         font-size: 1.1em;
         cursor: pointer;
@@ -92,41 +169,187 @@
         color: #333;
     }
 
-    /* Yellow */
     #exportHistoryButton:hover {
         background-color: #e0a800;
     }
 
-    #importHistoryButton {
+    #exportCSVButton {
         background-color: #17a2b8;
     }
 
-    /* Teal */
-    #importHistoryButton:hover {
+    #exportCSVButton:hover {
         background-color: #117a8b;
     }
 
-    /* --- Table --- */
+    #importHistoryButton {
+        background-color: #fd7e14;
+    }
+
+    #importHistoryButton:hover {
+        background-color: #d4690c;
+    }
+
+    #confirmEntryButton {
+        background-color: #28a745;
+    }
+
+    #confirmEntryButton:hover {
+        background-color: #218838;
+    }
+
+    #cancelEditButton {
+        background-color: #6c757d;
+        display: none;
+    }
+
+    #cancelEditButton:hover {
+        background-color: #5a6268;
+    }
+
+    .action-cell {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .edit-button,
+    .delete-button {
+        background: none;
+        border: none;
+        font-size: 1.2em;
+        font-weight: bold;
+        line-height: 1;
+        padding: 0 3px;
+        margin: 0 2px;
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+
+    .edit-button {
+        color: #007bff;
+    }
+
+    .edit-button:hover {
+        color: #0056b3;
+    }
+
+    .delete-button {
+        color: #dc3545;
+    }
+
+    .delete-button:hover {
+        color: #a71d2a;
+    }
+
+    /* --- Table Container and Sticky Header --- */
+    .history-table-container {
+        max-height: 400px;
+        overflow-y: auto;
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
     #historyTable {
         width: 100%;
         border-collapse: collapse;
-        margin-top: 20px;
     }
 
     #historyTable th,
     #historyTable td {
-        border: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
         padding: 10px;
         text-align: left;
         color: #333;
+        word-wrap: break-word;
+    }
+
+    #historyTable th:first-child,
+    #historyTable td:first-child {
+        border-left: none;
+    }
+
+    #historyTable th:last-child,
+    #historyTable td:last-child {
+        border-right: none;
     }
 
     #historyTable th {
         background-color: #e9e7fd;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        border-top: none;
     }
 
-    #historyTable tbody tr:nth-child(even) {
+    #historyTable tbody tr:nth-child(even):not(.meets-511-criteria) {
         background-color: #f9f9f9;
+    }
+
+    /* Apply zebra only if not highlighted */
+    #historyTable tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    #historyTable th:last-child,
+    #historyTable td:last-child {
+        width: 80px;
+        text-align: center;
+    }
+
+    /* Style for highlighted rows */
+    #historyTable tr.meets-511-criteria td {
+        background-color: #fff3cd;
+        /* Light yellow */
+        font-weight: 500;
+    }
+
+    #historyTable tr.meets-511-criteria:hover td {
+        background-color: #ffeeba;
+        /* Slightly darker yellow */
+    }
+
+    /* --- Entry Details Section --- */
+    #entryDetailsSection {
+        display: none;
+        margin-top: 20px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        scroll-margin-top: 10px;
+    }
+
+    #entryDetailsSection h3#entryDetailsTitle {
+        margin-bottom: 15px;
+    }
+
+    #entryDetailsSection label {
+        display: block;
+        margin-bottom: 3px;
+        margin-top: 8px;
+        font-weight: bold;
+    }
+
+    #entryDetailsSection textarea,
+    #entryDetailsSection select {
+        width: 95%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+
+    #entryDetailsSection textarea {
+        resize: vertical;
+        min-height: 40px;
+    }
+
+    .confirm-button-container {
+        text-align: center;
+        margin-top: 10px;
     }
 
     /* --- Import Section --- */
@@ -144,7 +367,6 @@
 
     #importDataArea {
         width: 95%;
-        /* Avoid full width to prevent scrollbar issues */
         min-height: 80px;
         margin-bottom: 10px;
         font-family: monospace;
@@ -157,14 +379,7 @@
         text-align: center;
     }
 
-    /* Center import button */
-
     /* --- Other --- */
-    .button-section {
-        text-align: center;
-        margin-top: 30px;
-    }
-
     #storageStatus {
         text-align: center;
         font-style: italic;
@@ -192,42 +407,84 @@
         </div>
     </div>
 
+    <div class="analysis-section">
+        <div id="summarySection">
+            <p>Average Duration:<span id="avgDuration">--:--</span></p>
+            <p>Average Frequency:<span id="avgFrequency">--:--</span></p>
+        </div>
+        <div id="rule511Section">
+            <p>5-1-1 Guideline Status:<span id="rule511Status" class="not-met">Not Enough Data</span></p>
+            <p id="rule511Description">(Freq ≤ 5min, Dur ≥ 45sec, For ≥ 1 hour)</p>
+        </div>
+        <div id="trendSection">
+            <p>Short-Term Trend (last 5): Duration <span id="durationTrend">--</span>, Frequency <span
+                    id="frequencyTrend">--</span></p>
+        </div>
+        <small style="display: block; margin-top: 10px; font-size: 0.75em; color: #888;"><em>Averages, 5-1-1 check, and
+                trends are based on the current history list. This tool is for information only, consult your healthcare
+                provider for medical advice.</em></small>
+    </div>
+
+    <div id="entryDetailsSection">
+        <h3 id="entryDetailsTitle">Add Details for Last Contraction</h3>
+        <input type="hidden" id="editingTimestamp" value="">
+        <label for="entryIntensity">Intensity:</label>
+        <select id="entryIntensity">
+            <option value="">--Select--</option>
+            <option value="Mild">Mild</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Strong">Strong</option>
+        </select>
+        <label for="entryNotes">Notes:</label>
+        <textarea id="entryNotes" rows="2" placeholder="Optional notes..."></textarea>
+        <div class="confirm-button-container">
+            <button id="confirmEntryButton">Confirm Entry</button>
+            <button id="cancelEditButton">Cancel Edit</button>
+        </div>
+    </div>
+
     <h2>Contraction History</h2>
-    <table id="historyTable">
-        <thead>
-            <tr>
-                <th>Start Time</th>
-                <th>Duration</th>
-                <th>Frequency (Start to Start)</th>
-            </tr>
-        </thead>
-        <tbody id="historyBody">
-            <tr id="no-history-row">
-                <td colspan="3" class="no-history">No contractions recorded yet. Load saved history, import data, or
-                    start timing.</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="history-table-container">
+        <table id="historyTable">
+            <thead>
+                <tr>
+                    <th>Start Time</th>
+                    <th>Duration</th>
+                    <th>Frequency</th>
+                    <th>Intensity</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="historyBody">
+                <tr id="no-history-row">
+                    <td colspan="6" class="no-history">No contractions recorded yet. Load saved history, import data, or
+                        start timing.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <div class="button-section">
         <button id="saveHistoryButton">Save History</button>
-        <button id="exportHistoryButton">Export History</button> <button id="clearHistoryButton">Clear History</button>
+        <button id="exportHistoryButton">Export JSON</button>
+        <button id="exportCSVButton">Export CSV</button>
+        <button id="clearHistoryButton">Clear History</button>
         <p id="storageStatus"></p>
     </div>
 
     <div class="import-section">
-        <h3>Import History</h3>
-        <label for="importDataArea">Paste previously exported data here:</label>
+        <h3>Import History (JSON)</h3>
+        <label for="importDataArea">Paste JSON data here:</label>
         <textarea id="importDataArea" rows="4"></textarea>
         <div class="import-button-container">
             <button id="importHistoryButton">Import Data (Replaces Current)</button>
         </div>
     </div>
-
 </div>
 
 <script>
-    (function() {
+    (function () {
         // --- DOM Elements ---
         const timerButton = document.getElementById('timerButton');
         const currentDurationEl = document.getElementById('currentDuration');
@@ -236,349 +493,180 @@
         const clearHistoryButton = document.getElementById('clearHistoryButton');
         const saveHistoryButton = document.getElementById('saveHistoryButton');
         const storageStatus = document.getElementById('storageStatus');
-        const exportHistoryButton = document.getElementById('exportHistoryButton'); // Export Button
-        const importDataArea = document.getElementById('importDataArea');         // Import Textarea
-        const importHistoryButton = document.getElementById('importHistoryButton'); // Import Button
-    
+        const exportHistoryButton = document.getElementById('exportHistoryButton');
+        const exportCSVButton = document.getElementById('exportCSVButton');
+        const importDataArea = document.getElementById('importDataArea');
+        const importHistoryButton = document.getElementById('importHistoryButton');
+        const entryDetailsSection = document.getElementById('entryDetailsSection');
+        const entryIntensity = document.getElementById('entryIntensity');
+        const entryNotes = document.getElementById('entryNotes');
+        const confirmEntryButton = document.getElementById('confirmEntryButton');
+        const avgDurationEl = document.getElementById('avgDuration');
+        const avgFrequencyEl = document.getElementById('avgFrequency');
+        const rule511StatusEl = document.getElementById('rule511Status');
+        const entryDetailsTitle = document.getElementById('entryDetailsTitle');
+        const editingTimestampInput = document.getElementById('editingTimestamp');
+        const cancelEditButton = document.getElementById('cancelEditButton');
+        const durationTrendEl = document.getElementById('durationTrend');
+        const frequencyTrendEl = document.getElementById('frequencyTrend');
+
         // --- State Variables ---
-        let isTiming = false;
-        let startTime = null;       // Timestamp number
-        let lastStartTime = null;   // Timestamp number
-        let timerInterval = null;
-        let timeSinceLastInterval = null;
-        let contractions = [];      // {startTime: number, duration: number, frequency: number|null}
-    
+        let isTiming = false; let startTime = null; let lastStartTime = null;
+        let timerInterval = null; let timeSinceLastInterval = null;
+        let contractions = []; let pendingEntry = null;
         const STORAGE_KEY = 'contractionHistory';
-    
+        let editingTimestamp = null;
+
+        // --- Constants ---
+        const FIVE_MINUTES_S = 5 * 60; // 300 seconds
+        const FORTY_FIVE_SECONDS_S = 45;
+        const ONE_HOUR_MS = 60 * 60 * 1000;
+        const TREND_WINDOW = 5;
+        const TREND_TOLERANCE_S = 5;
+
         // --- Local Storage & Data Handling ---
         function saveHistoryToStorage() {
-            try {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(contractions));
-                displayStatus("History saved to browser storage.", 3000);
-            } catch (e) {
-                console.error("Error saving history:", e);
-                displayStatus("Error saving history.", 5000);
-            }
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(contractions)); displayStatus("History saved.", 3000); }
+            catch (e) { console.error("Error saving history:", e); displayStatus("Error saving: " + e.message, 5000); }
         }
-    
         function loadHistoryFromStorage() {
-            const storedHistory = localStorage.getItem(STORAGE_KEY);
-            let loaded = false;
-            if (storedHistory) {
-                try {
-                    const parsedHistory = JSON.parse(storedHistory);
-                    if (isValidHistoryData(parsedHistory)) {
-                        contractions = parsedHistory;
-                        loaded = true;
-                    } else {
-                        console.error("Stored history data format is invalid, clearing.");
-                        localStorage.removeItem(STORAGE_KEY);
-                        contractions = [];
-                    }
-                } catch (e) {
-                    console.error("Error parsing stored history:", e);
-                    localStorage.removeItem(STORAGE_KEY);
-                    contractions = [];
-                }
-            } else {
-                contractions = [];
-            }
-            lastStartTime = contractions.length > 0 ? contractions[0].startTime : null;
-            return loaded;
+            const storedHistory = localStorage.getItem(STORAGE_KEY); let loaded = false;
+            if (storedHistory) { try { const parsedHistory = JSON.parse(storedHistory); if (isValidHistoryData(parsedHistory)) { contractions = parsedHistory.map(c => ({ startTime: Number(c.startTime), duration: Number(c.duration), frequency: (c.frequency === null || typeof c.frequency === 'undefined') ? null : Number(c.frequency), intensity: c.intensity || '', notes: c.notes || '' })); loaded = true; } else { console.error("Invalid stored history."); localStorage.removeItem(STORAGE_KEY); contractions = []; } } catch (e) { console.error("Error parsing stored history:", e); localStorage.removeItem(STORAGE_KEY); contractions = []; } } else { contractions = []; } lastStartTime = contractions.length > 0 ? contractions[0].startTime : null; return loaded;
         }
-    
         function isValidHistoryData(data) {
-            if (!Array.isArray(data)) return false;
-            return data.every(item =>
-                typeof item === 'object' && item !== null &&
-                typeof item.startTime === 'number' &&
-                typeof item.duration === 'number' &&
-                (typeof item.frequency === 'number' || item.frequency === null)
-            );
+            if (!Array.isArray(data)) return false; if (data.length === 0) return true;
+            return data.every(item => typeof item === 'object' && item !== null && typeof item.startTime === 'number' && !isNaN(item.startTime) && typeof item.duration === 'number' && !isNaN(item.duration) && (item.frequency === null || (typeof item.frequency === 'number' && !isNaN(item.frequency))) && (typeof item.intensity === 'string' || item.intensity == null) && (typeof item.notes === 'string' || item.notes == null));
         }
-    
+
         // --- Helper Functions ---
         function displayStatus(message, durationMs = 0) {
-            if (storageStatus) {
-                storageStatus.textContent = message;
-                if (durationMs > 0) {
-                    setTimeout(() => {
-                        if (storageStatus.textContent === message) {
-                           storageStatus.textContent = '';
-                        }
-                    }, durationMs);
-                }
-            }
+            if (storageStatus) { storageStatus.textContent = message; if (durationMs > 0) { setTimeout(() => { if (storageStatus.textContent === message) { storageStatus.textContent = ''; } }, durationMs); } }
         }
-    
         function formatTime(totalSeconds) {
-            if (totalSeconds === null || isNaN(totalSeconds)) return "--:--";
-            const minutes = Math.floor(totalSeconds / 60);
-            const seconds = Math.floor(totalSeconds % 60);
-            return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            if (totalSeconds === null || typeof totalSeconds !== 'number' || isNaN(totalSeconds)) return "--:--"; const minutes = Math.floor(totalSeconds / 60); const seconds = Math.floor(totalSeconds % 60); return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
         }
-    
         function formatTimestamp(timestamp) {
-            if (!timestamp || isNaN(timestamp)) return "N/A";
-            const date = new Date(timestamp);
-            const hours = String(date.getHours()).padStart(2, '0');
-            const minutes = String(date.getMinutes()).padStart(2, '0');
-            const seconds = String(date.getSeconds()).padStart(2, '0');
-            return `${hours}:${minutes}:${seconds}`;
+            if (!timestamp || typeof timestamp !== 'number' || isNaN(timestamp)) return "N/A"; const date = new Date(timestamp); return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
         }
-    
         function updateDurationDisplay() {
-            if (!startTime) return;
-            const now = Date.now();
-            const elapsedSeconds = (now - startTime) / 1000;
-            if (currentDurationEl) currentDurationEl.textContent = formatTime(elapsedSeconds);
+            if (!startTime) return; const now = Date.now(); const elapsedSeconds = (now - startTime) / 1000; if (currentDurationEl) currentDurationEl.textContent = formatTime(elapsedSeconds);
         }
-    
         function updateTimeSinceLastDisplay() {
-            if (!lastStartTime) {
-                if (timeSinceLastEl) timeSinceLastEl.textContent = '--:--';
-                return;
-            };
-            const now = Date.now();
-            const elapsedSeconds = (now - lastStartTime) / 1000;
-            if (timeSinceLastEl) timeSinceLastEl.textContent = formatTime(elapsedSeconds);
+            if (!lastStartTime) { if (timeSinceLastEl) timeSinceLastEl.textContent = '--:--'; return; }; const now = Date.now(); const elapsedSeconds = (now - lastStartTime) / 1000; if (timeSinceLastEl) timeSinceLastEl.textContent = formatTime(elapsedSeconds);
         }
-    
+
+        // --- Analysis Functions ---
+        function calculateAverages() {
+            let totalDuration = 0, totalFrequency = 0, frequencyCount = 0, durationCount = 0;
+            contractions.forEach(c => { if (typeof c.duration === 'number') { totalDuration += c.duration; durationCount++; } if (typeof c.frequency === 'number') { totalFrequency += c.frequency; frequencyCount++; } }); const avgDuration = durationCount > 0 ? totalDuration / durationCount : null; const avgFrequency = frequencyCount > 0 ? totalFrequency / frequencyCount : null;
+            return { avgDuration, avgFrequency };
+        }
+        function updateSummaryDisplay() {
+            if (!avgDurationEl || !avgFrequencyEl) return; const averages = calculateAverages(); avgDurationEl.textContent = formatTime(averages.avgDuration); avgFrequencyEl.textContent = formatTime(averages.avgFrequency);
+        }
+        function check511Rule() {
+            const now = Date.now(); const oneHourAgo = now - ONE_HOUR_MS; const recentContractions = contractions.filter(c => c.startTime >= oneHourAgo); if (recentContractions.length < 2) { return 'Not Enough Data'; } const oldestStartTimeInWindow = recentContractions[recentContractions.length - 1].startTime; if (oldestStartTimeInWindow > oneHourAgo) { return 'Not Enough Data'; } let allDurationsMet = true; let allFrequenciesMet = true; for (let i = 0; i < recentContractions.length; i++) { const c = recentContractions[i]; if (c.duration < FORTY_FIVE_SECONDS_S) { allDurationsMet = false; break; } if (i < recentContractions.length - 1) { if (c.frequency === null || c.frequency > FIVE_MINUTES_S) { allFrequenciesMet = false; break; } } } return (allDurationsMet && allFrequenciesMet) ? 'Possibly Met' : 'Not Met';
+        }
+        function update511Display() {
+            if (!rule511StatusEl) return; const status = check511Rule(); let statusText = 'Not Enough Data'; let statusClass = 'not-met'; switch (status) { case 'Not Met': statusText = 'Pattern Not Met'; statusClass = 'not-met'; break; case 'Possibly Met': statusText = 'Pattern Possibly Met'; statusClass = 'possible'; break; } rule511StatusEl.textContent = statusText; rule511StatusEl.className = ''; rule511StatusEl.classList.add(statusClass);
+        }
+        function calculateTrends() {
+            let durationTrend = '--'; let frequencyTrend = '--'; if (contractions.length >= TREND_WINDOW) { const latestDuration = contractions[0].duration; const previousDuration = contractions[TREND_WINDOW - 1].duration; const diff = latestDuration - previousDuration; if (Math.abs(diff) <= TREND_TOLERANCE_S) { durationTrend = 'Stable ↔'; } else if (diff > 0) { durationTrend = 'Longer ↑'; } else { durationTrend = 'Shorter ↓'; } } if (contractions.length >= TREND_WINDOW && contractions[0].frequency !== null && typeof contractions[0].frequency === 'number' && contractions[TREND_WINDOW - 1].frequency !== null && typeof contractions[TREND_WINDOW - 1].frequency === 'number') { const latestFrequency = contractions[0].frequency; const previousFrequency = contractions[TREND_WINDOW - 1].frequency; const diff = latestFrequency - previousFrequency; if (Math.abs(diff) <= TREND_TOLERANCE_S) { frequencyTrend = 'Stable ↔'; } else if (diff < 0) { frequencyTrend = 'Faster ↑'; } else { frequencyTrend = 'Slower ↓'; } } return { durationTrend, frequencyTrend };
+        }
+        function updateTrendDisplay() {
+            if (!durationTrendEl || !frequencyTrendEl) return; const trends = calculateTrends(); durationTrendEl.textContent = trends.durationTrend; frequencyTrendEl.textContent = trends.frequencyTrend;
+        }
+
+        // --- History Table Update (includes highlights) ---
         function updateHistoryTable() {
             if (!historyBody) return;
             historyBody.innerHTML = '';
-    
             if (contractions.length === 0) {
-                const row = historyBody.insertRow();
-                const cell = row.insertCell();
-                cell.colSpan = 3;
-                cell.className = 'no-history';
-                cell.textContent = 'No history yet. Start timing, load saved data, or import data.';
+                const row = historyBody.insertRow(); row.id = 'no-history-row';
+                const cell = row.insertCell(); cell.colSpan = 6; cell.className = 'no-history';
+                cell.textContent = 'No contractions recorded yet.';
             } else {
-                contractions.forEach((contraction, index) => {
+                contractions.forEach((contraction) => {
                     const row = historyBody.insertRow();
-                    const cellStartTime = row.insertCell();
-                    const cellDuration = row.insertCell();
-                    const cellFrequency = row.insertCell();
+                    // Add highlight class if criteria met
+                    if (contraction.duration >= FORTY_FIVE_SECONDS_S &&
+                        contraction.frequency !== null && contraction.frequency <= FIVE_MINUTES_S) {
+                        row.classList.add('meets-511-criteria');
+                    }
+
+                    const cellStartTime = row.insertCell(); const cellDuration = row.insertCell();
+                    const cellFrequency = row.insertCell(); const cellIntensity = row.insertCell();
+                    const cellNotes = row.insertCell(); const cellActions = row.insertCell();
+                    cellActions.classList.add('action-cell');
+
                     cellStartTime.textContent = formatTimestamp(contraction.startTime);
                     cellDuration.textContent = formatTime(contraction.duration);
                     cellFrequency.textContent = contraction.frequency === null ? "N/A" : formatTime(contraction.frequency);
+                    cellIntensity.textContent = contraction.intensity || '';
+                    cellNotes.textContent = contraction.notes || '';
+
+                    const editButton = document.createElement('button'); editButton.classList.add('edit-button'); editButton.innerHTML = '✎'; editButton.setAttribute('title', 'Edit intensity/notes'); editButton.setAttribute('data-timestamp', contraction.startTime); cellActions.appendChild(editButton);
+                    const deleteButton = document.createElement('button'); deleteButton.classList.add('delete-button'); deleteButton.innerHTML = '×'; deleteButton.setAttribute('title', 'Delete this entry'); deleteButton.setAttribute('data-timestamp', contraction.startTime); cellActions.appendChild(deleteButton);
                 });
             }
+            // Update analysis sections
+            updateSummaryDisplay();
+            update511Display();
+            updateTrendDisplay();
         }
-    
+
+        // --- Edit State Management ---
+        function resetEditState() {
+            editingTimestamp = null; if (editingTimestampInput) editingTimestampInput.value = ""; if (entryIntensity) entryIntensity.value = ""; if (entryNotes) entryNotes.value = ""; if (entryDetailsTitle) entryDetailsTitle.textContent = "Add Details for Last Contraction"; if (confirmEntryButton) confirmEntryButton.textContent = "Confirm Entry"; if (cancelEditButton) cancelEditButton.style.display = 'none'; if (entryDetailsSection) entryDetailsSection.style.display = 'none';
+        }
+
         // --- Event Handlers ---
         function handleTimerClick() {
-            if (!timerButton || !currentDurationEl || !timeSinceLastEl || !historyBody) return;
-            const now = Date.now();
-    
-            if (!isTiming) {
-                // STARTING
-                isTiming = true;
-                startTime = now;
-                clearInterval(timerInterval);
-                timerInterval = setInterval(updateDurationDisplay, 500);
-                updateDurationDisplay();
-                clearInterval(timeSinceLastInterval);
-                timerButton.textContent = 'Stop Contraction';
-                timerButton.classList.add('timing');
-            } else {
-                // STOPPING
-                isTiming = false;
-                const endTime = now;
-                const duration = (endTime - startTime) / 1000;
-                clearInterval(timerInterval);
-                currentDurationEl.textContent = formatTime(duration);
-    
-                let frequency = null;
-                if (lastStartTime) {
-                    frequency = (startTime - lastStartTime) / 1000;
-                }
-    
-                const contractionRecord = {
-                    startTime: startTime, // Store timestamp number
-                    duration: duration,
-                    frequency: frequency
-                };
-                contractions.unshift(contractionRecord);
-                updateHistoryTable();
-                // No automatic save
-    
-                lastStartTime = startTime;
-                startTime = null;
-                clearInterval(timeSinceLastInterval);
-                timeSinceLastInterval = setInterval(updateTimeSinceLastDisplay, 1000);
-                updateTimeSinceLastDisplay();
-                timerButton.textContent = 'Start Contraction';
-                timerButton.classList.remove('timing');
-            }
+            if (!timerButton || !currentDurationEl || !timeSinceLastEl || !historyBody) return; const now = Date.now(); if (!isTiming) { if (editingTimestamp !== null) { resetEditState(); } isTiming = true; startTime = now; clearInterval(timerInterval); timerInterval = setInterval(updateDurationDisplay, 500); updateDurationDisplay(); clearInterval(timeSinceLastInterval); if (timeSinceLastEl) timeSinceLastEl.textContent = '--:--'; timerButton.textContent = 'Stop Contraction'; timerButton.classList.add('timing'); if (entryDetailsSection) entryDetailsSection.style.display = 'none'; } else { isTiming = false; const endTime = now; const duration = (endTime - startTime) / 1000; clearInterval(timerInterval); currentDurationEl.textContent = formatTime(duration); let frequency = null; if (lastStartTime) { frequency = (startTime - lastStartTime) / 1000; } pendingEntry = { startTime: startTime, duration: duration, frequency: frequency }; editingTimestamp = null; if (editingTimestampInput) editingTimestampInput.value = ""; if (entryIntensity) entryIntensity.value = ""; if (entryNotes) entryNotes.value = ""; if (entryDetailsTitle) entryDetailsTitle.textContent = "Add Details for Last Contraction"; if (confirmEntryButton) confirmEntryButton.textContent = "Confirm Entry"; if (cancelEditButton) cancelEditButton.style.display = 'none'; if (entryDetailsSection) { entryDetailsSection.style.display = 'block'; entryIntensity.focus(); } else { console.error("Entry details missing"); handleConfirmEntryClick(); } }
         }
-    
+        function handleConfirmEntryClick() {
+            const currentEditTimestamp = editingTimestampInput ? Number(editingTimestampInput.value) : null; if (currentEditTimestamp && !isNaN(currentEditTimestamp)) { const notesValue = entryNotes ? entryNotes.value : ''; const intensityValue = entryIntensity ? entryIntensity.value : ''; const indexToUpdate = contractions.findIndex(c => c.startTime === currentEditTimestamp); if (indexToUpdate !== -1) { contractions[indexToUpdate].notes = notesValue; contractions[indexToUpdate].intensity = intensityValue; resetEditState(); updateHistoryTable(); displayStatus("Entry updated.", 2000); } else { console.error("Update error: Could not find entry:", currentEditTimestamp); displayStatus("Error updating.", 3000); resetEditState(); } } else { if (!pendingEntry) { console.error("Confirm add: no pending data."); resetEditState(); return; } const notesValue = entryNotes ? entryNotes.value : ''; const intensityValue = entryIntensity ? entryIntensity.value : ''; const contractionRecord = { startTime: pendingEntry.startTime, duration: pendingEntry.duration, frequency: pendingEntry.frequency, intensity: intensityValue, notes: notesValue }; contractions.unshift(contractionRecord); lastStartTime = pendingEntry.startTime; updateHistoryTable(); startTime = null; pendingEntry = null; clearInterval(timeSinceLastInterval); if (lastStartTime) { timeSinceLastInterval = setInterval(updateTimeSinceLastDisplay, 1000); updateTimeSinceLastDisplay(); } else { if (timeSinceLastEl) timeSinceLastEl.textContent = '--:--'; } if (timerButton) { timerButton.textContent = 'Start Contraction'; timerButton.classList.remove('timing'); } if (entryDetailsSection) { entryDetailsSection.style.display = 'none'; } displayStatus("Entry added.", 2000); }
+        }
         function handleSaveHistoryClick() {
-            if (contractions.length === 0) {
-                 displayStatus("No history to save.", 3000);
-                 return;
-            }
-            if (confirm("Save contraction history?\n\nThis will store the current history list in your browser's local storage for your next visit.\nData is NOT sent anywhere else.")) {
-                saveHistoryToStorage();
-            }
+            if (contractions.length === 0) { displayStatus("No history to save.", 3000); return; } if (confirm("Save history to browser storage?")) { saveHistoryToStorage(); }
         }
-    
         function handleClearHistoryClick() {
-            if (!clearHistoryButton) return;
-            let confirmMsg = "Are you sure you want to clear the current history list?";
-            let historyIsSaved = localStorage.getItem(STORAGE_KEY) !== null;
-    
-            if (contractions.length === 0 && !historyIsSaved) {
-                displayStatus("History is already empty.", 3000);
-                return;
-            }
-            if (historyIsSaved) {
-                confirmMsg += "\n\nThis will ALSO delete any previously saved history from your browser storage.";
-            }
-    
-            if (confirm(confirmMsg)) {
-                contractions = [];
-                lastStartTime = null;
-                startTime = null;
-                isTiming = false;
-    
-                clearInterval(timerInterval);
-                clearInterval(timeSinceLastInterval);
-    
-                if(currentDurationEl) currentDurationEl.textContent = '00:00';
-                if(timeSinceLastEl) timeSinceLastEl.textContent = '--:--';
-                if(timerButton) {
-                     timerButton.textContent = 'Start Contraction';
-                     timerButton.classList.remove('timing');
-                }
-    
-                if (historyIsSaved) {
-                     localStorage.removeItem(STORAGE_KEY);
-                }
-                updateHistoryTable();
-                displayStatus("History cleared.", 3000);
-            }
+            if (!clearHistoryButton) return; let confirmMsg = "Clear current history?"; let historyIsSaved = localStorage.getItem(STORAGE_KEY) !== null; if (contractions.length === 0 && !historyIsSaved) { displayStatus("History empty.", 3000); return; } if (historyIsSaved) { confirmMsg += "\nAlso delete saved history?"; } if (confirm(confirmMsg)) { contractions = []; lastStartTime = null; startTime = null; isTiming = false; pendingEntry = null; clearInterval(timerInterval); clearInterval(timeSinceLastInterval); if (currentDurationEl) currentDurationEl.textContent = '00:00'; if (timeSinceLastEl) timeSinceLastEl.textContent = '--:--'; if (avgDurationEl) avgDurationEl.textContent = '--:--'; if (avgFrequencyEl) avgFrequencyEl.textContent = '--:--'; if (rule511StatusEl) { rule511StatusEl.textContent = 'Not Enough Data'; rule511StatusEl.className = 'not-met'; } if (durationTrendEl) durationTrendEl.textContent = '--'; if (frequencyTrendEl) frequencyTrendEl.textContent = '--'; if (timerButton) { timerButton.textContent = 'Start Contraction'; timerButton.classList.remove('timing'); } resetEditState(); if (historyIsSaved) { localStorage.removeItem(STORAGE_KEY); } updateHistoryTable(); displayStatus("History cleared.", 3000); }
         }
-    
-        // *** MODIFIED: Export Handler - Asks User Choice ***
         function handleExportHistoryClick() {
-            if (contractions.length === 0) {
-                displayStatus("No history to export.", 3000);
-                return;
-            }
-    
-            // Ask user for preference
-            const choice = prompt("Choose export method:\nType 'D' to Download file\nType 'C' to Copy to clipboard", "D");
-    
-            if (choice === null) {
-                displayStatus("Export cancelled.", 2000);
-                return; // User cancelled prompt
-            }
-    
-            const choiceUpper = choice.toUpperCase();
-    
-            if (choiceUpper === 'D') {
-                // --- Download Logic ---
-                try {
-                    const jsonData = JSON.stringify(contractions, null, 2); // Pretty print
-                    const blob = new Blob([jsonData], { type: 'application/json' });
-                    const url = URL.createObjectURL(blob);
-                    const link = document.createElement('a');
-                    link.href = url;
-                    const now = new Date();
-                    const timestamp = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}`;
-                    link.download = `contraction_history_${timestamp}.json`;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    URL.revokeObjectURL(url);
-                    displayStatus("History exported as JSON file.", 3000);
-                } catch (e) {
-                     console.error("Error exporting history to file:", e);
-                     displayStatus("Error exporting history file.", 5000);
-                }
-            } else if (choiceUpper === 'C') {
-                // --- Copy to Clipboard Logic ---
-                try {
-                    const jsonDataPlain = JSON.stringify(contractions, null, 2); // Pretty print is fine for copy too
-                     // Use Clipboard API
-                     if (navigator.clipboard && navigator.clipboard.writeText) {
-                         navigator.clipboard.writeText(jsonDataPlain).then(() => {
-                            displayStatus("History copied to clipboard.", 3000);
-                         }).catch(err => {
-                            console.error('Clipboard write failed:', err);
-                            // Fallback for older browsers or if permissions fail - using alert
-                             alert("Could not copy automatically. Please manually copy the data below:\n\n" + jsonDataPlain);
-                             displayStatus("History ready in alert box to copy manually.", 5000);
-                         });
-                     } else {
-                          // Very basic fallback if clipboard API not supported at all
-                          alert("Please manually copy the data below:\n\n" + jsonDataPlain);
-                          displayStatus("History ready in alert box to copy manually.", 5000);
-                     }
-                } catch (e) {
-                    console.error("Error preparing history for clipboard:", e);
-                    displayStatus("Error copying history.", 5000);
-                }
-            } else {
-                displayStatus("Invalid choice. Please type 'D' or 'C'.", 3000);
-            }
+            if (contractions.length === 0) { displayStatus("No history to export.", 3000); return; } const choice = prompt("JSON Export: 'D'ownload or 'C'opy?", "D"); if (choice === null) { displayStatus("JSON Export cancelled.", 2000); return; } const choiceUpper = choice.toUpperCase(); if (choiceUpper === 'D') { try { const jsonData = JSON.stringify(contractions, null, 2); const blob = new Blob([jsonData], { type: 'application/json;charset=utf-8;' }); const url = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = url; const now = new Date(); const timestamp = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}`; link.download = `contraction_history_${timestamp}.json`; document.body.appendChild(link); link.click(); document.body.removeChild(link); URL.revokeObjectURL(url); displayStatus("JSON exported.", 3000); } catch (e) { console.error("JSON Export error:", e); displayStatus("Error exporting JSON.", 5000); } } else if (choiceUpper === 'C') { try { const jsonDataPlain = JSON.stringify(contractions, null, 2); if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(jsonDataPlain).then(() => { displayStatus("JSON copied.", 3000); }).catch(err => { console.error('Clipboard error:', err); alert("Copy manually:\n\n" + jsonDataPlain); displayStatus("Copy manually.", 5000); }); } else { alert("Copy manually:\n\n" + jsonDataPlain); displayStatus("Copy manually.", 5000); } } catch (e) { console.error("JSON Copy error:", e); displayStatus("Error copying JSON.", 5000); } } else { displayStatus("Invalid choice.", 3000); }
         }
-    
-        // *** Import Handler ***
+        function escapeCsvField(field) {
+            const stringField = (field === null || typeof field === 'undefined') ? '' : String(field); const escapedField = stringField.replace(/"/g, '""'); return `"${escapedField}"`;
+        }
+        function exportHistoryAsCSV() {
+            if (contractions.length === 0) { displayStatus("No history to export.", 3000); return; } try { const headers = ["Start Time", "Duration (MM:SS)", "Frequency (MM:SS)", "Intensity", "Notes"]; const headerRow = headers.map(escapeCsvField).join(','); const dataRows = contractions.map(c => { const row = [formatTimestamp(c.startTime), formatTime(c.duration), c.frequency === null ? "N/A" : formatTime(c.frequency), c.intensity || '', c.notes || '']; return row.map(escapeCsvField).join(','); }); const csvContent = [headerRow, ...dataRows].join('\n'); const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' }); const url = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = url; const now = new Date(); const timestamp = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}`; link.download = `contraction_history_${timestamp}.csv`; document.body.appendChild(link); link.click(); document.body.removeChild(link); URL.revokeObjectURL(url); displayStatus("CSV exported.", 3000); } catch (e) { console.error("CSV Export error:", e); displayStatus("Error exporting CSV: " + e.message, 5000); }
+        }
         function handleImportHistoryClick() {
-            if (!importDataArea || !importHistoryButton) return;
-            const pastedData = importDataArea.value.trim();
-    
-            if (!pastedData) {
-                displayStatus("Paste exported data into the text area first.", 3000);
-                return;
-            }
-    
-            if (contractions.length > 0) {
-                if (!confirm("Importing will replace your current history list. Continue?")) {
-                    return; // User cancelled
-                }
-            }
-    
-            try {
-                const parsedData = JSON.parse(pastedData);
-                if (!isValidHistoryData(parsedData)) {
-                     throw new Error("Imported data is not in the expected format (array of contraction records).");
-                }
-    
-                contractions = parsedData;
-                lastStartTime = contractions.length > 0 ? contractions[0].startTime : null;
-    
-                updateHistoryTable();
-                updateTimeSinceLastDisplay();
-                importDataArea.value = '';
-                displayStatus("History imported successfully.", 3000);
-    
-            } catch (e) {
-                console.error("Error importing history:", e);
-                displayStatus(`Import failed: ${e.message}`, 5000);
-            }
+            if (!importDataArea || !importHistoryButton) return; const pastedData = importDataArea.value.trim(); if (!pastedData) { displayStatus("Paste JSON data first.", 3000); return; } if (contractions.length > 0) { if (!confirm("Importing replaces current history. Continue?")) { displayStatus("Import cancelled.", 2000); return; } } try { const parsedData = JSON.parse(pastedData); if (!isValidHistoryData(parsedData)) { throw new Error(Array.isArray(parsedData) ? "Invalid format." : "Not an array."); } contractions = []; lastStartTime = null; startTime = null; isTiming = false; pendingEntry = null; clearInterval(timerInterval); clearInterval(timeSinceLastInterval); if (currentDurationEl) currentDurationEl.textContent = '00:00'; if (timeSinceLastEl) timeSinceLastEl.textContent = '--:--'; if (timerButton) { timerButton.textContent = 'Start Contraction'; timerButton.classList.remove('timing'); } resetEditState(); contractions = parsedData.map(c => ({ startTime: Number(c.startTime), duration: Number(c.duration), frequency: (c.frequency === null || typeof c.frequency === 'undefined') ? null : Number(c.frequency), intensity: c.intensity || '', notes: c.notes || '' })); lastStartTime = contractions.length > 0 ? contractions[0].startTime : null; updateHistoryTable(); updateTimeSinceLastDisplay(); if (lastStartTime && !isTiming) { clearInterval(timeSinceLastInterval); timeSinceLastInterval = setInterval(updateTimeSinceLastDisplay, 1000); } importDataArea.value = ''; displayStatus("History imported.", 3000); } catch (e) { console.error("Import error:", e); displayStatus(`Import failed: ${e.message}.`, 6000); }
         }
-    
+        function handleDeleteClick(event) {
+            if (event.target.classList.contains('delete-button')) { const button = event.target; const timestampToDelete = Number(button.getAttribute('data-timestamp')); if (isNaN(timestampToDelete)) { console.error("Invalid delete timestamp:", button.getAttribute('data-timestamp')); return; } if (editingTimestamp !== null && editingTimestamp === timestampToDelete) { resetEditState(); } if (confirm(`Delete entry started at ${formatTimestamp(timestampToDelete)}?`)) { const indexToDelete = contractions.findIndex(c => c.startTime === timestampToDelete); if (indexToDelete !== -1) { const wasMostRecent = (indexToDelete === 0); contractions.splice(indexToDelete, 1); if (wasMostRecent) { lastStartTime = contractions.length > 0 ? contractions[0].startTime : null; updateTimeSinceLastDisplay(); clearInterval(timeSinceLastInterval); if (lastStartTime) { timeSinceLastInterval = setInterval(updateTimeSinceLastDisplay, 1000); } } updateHistoryTable(); displayStatus("Entry deleted.", 2000); } else { console.error("Could not find entry to delete:", timestampToDelete); displayStatus("Error deleting.", 3000); } } }
+        }
+        function handleEditClick(event) {
+            if (event.target.classList.contains('edit-button')) { const button = event.target; const timestampToEdit = Number(button.getAttribute('data-timestamp')); if (isNaN(timestampToEdit)) { console.error("Invalid edit timestamp:", button.getAttribute('data-timestamp')); return; } const entryToEdit = contractions.find(c => c.startTime === timestampToEdit); if (!entryToEdit) { console.error("Could not find entry to edit:", timestampToEdit); return; } editingTimestamp = timestampToEdit; if (editingTimestampInput) editingTimestampInput.value = timestampToEdit; if (entryIntensity) entryIntensity.value = entryToEdit.intensity || ''; if (entryNotes) entryNotes.value = entryToEdit.notes || ''; if (entryDetailsTitle) entryDetailsTitle.textContent = `Edit Entry (Started ${formatTimestamp(timestampToEdit)})`; if (confirmEntryButton) confirmEntryButton.textContent = "Update Entry"; if (cancelEditButton) cancelEditButton.style.display = 'inline-block'; if (entryDetailsSection) { entryDetailsSection.style.display = 'block'; entryDetailsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); entryIntensity.focus(); } }
+        }
+        function handleCancelEditClick() {
+            resetEditState();
+        }
+
         // --- Initialization ---
         let wasHistoryLoaded = loadHistoryFromStorage();
-    
-        // Add event listeners
         if (timerButton) timerButton.addEventListener('click', handleTimerClick);
         if (clearHistoryButton) clearHistoryButton.addEventListener('click', handleClearHistoryClick);
         if (saveHistoryButton) saveHistoryButton.addEventListener('click', handleSaveHistoryClick);
         if (exportHistoryButton) exportHistoryButton.addEventListener('click', handleExportHistoryClick);
+        if (exportCSVButton) exportCSVButton.addEventListener('click', exportHistoryAsCSV);
         if (importHistoryButton) importHistoryButton.addEventListener('click', handleImportHistoryClick);
-    
-        // Initial render
-        updateHistoryTable();
-        updateTimeSinceLastDisplay();
-    
-        if (wasHistoryLoaded) {
-           displayStatus("Loaded previously saved history.", 3000);
-        }
-    
+        if (confirmEntryButton) confirmEntryButton.addEventListener('click', handleConfirmEntryClick);
+        if (historyBody) { historyBody.addEventListener('click', handleEditClick); historyBody.addEventListener('click', handleDeleteClick); }
+        if (cancelEditButton) cancelEditButton.addEventListener('click', handleCancelEditClick);
+        updateHistoryTable(); updateTimeSinceLastDisplay(); resetEditState(); if (wasHistoryLoaded) { displayStatus("Loaded saved history.", 3000); } if (lastStartTime && !isTiming) { clearInterval(timeSinceLastInterval); timeSinceLastInterval = setInterval(updateTimeSinceLastDisplay, 1000); }
+
     })();
-    </script>
+</script>
