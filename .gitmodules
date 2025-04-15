@@ -1,3 +1,7 @@
 [submodule "DadWritesTech/themes/hugo-coder"]
 	path = DadWritesTech/themes/hugo-coder
 	url = https://github.com/luizdepra/hugo-coder.git
+[submodule "DadWritesTech/public"]
+	path = DadWritesTech/public
+	url = https://github.com/dadwritestech/blog.git
+	branch = main
