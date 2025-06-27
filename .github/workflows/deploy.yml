@@ -34,6 +34,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           external_repository: dadwritestech/blog
-          github_token: ${{ secrets.DEPLOY_TOKEN }}
+          token: ${{ secrets.DEPLOY_TOKEN }}
           publish_dir: ./DadWritesTech/public
           cname: www.dad-writes-tech.com
