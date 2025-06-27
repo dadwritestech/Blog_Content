@@ -1,0 +1,20 @@
+techguide:
+  label: Tech Guide
+  description: "Guides and tutorials related to technology."
+  permalink: /tags/techguide
+short-story:
+  label: Short Story
+  description: "Creative writing and short stories."
+  permalink: /tags/short-story
+general:
+  label: General
+  description: "General topics and discussions."
+  permalink: /tags/general
+test:
+  label: Test
+  description: "Test posts."
+  permalink: /tags/test
+techGuides:
+  label: Tech Guides
+  description: "Guides and tutorials related to technology."
+  permalink: /tags/techguides
