@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_portfolio=self.webpackChunkdocusaurus_portfolio||[]).push([[947],{6600:e=>{e.exports=JSON.parse('{"authors":[{"name":"Dad Writes Tech","title":"Technical Writer, Dad, and newb Gamer","imageURL":"https://www.dad-writes-tech.com/images/avatar.jpg","key":"DadWritesTech","page":null,"count":8}]}')}}]);
