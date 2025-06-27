@@ -1,0 +1,35 @@
+name: Deploy Docusaurus site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./DadWritesTech
+
+      - name: Build Docusaurus website
+        run: npm run build
+        working-directory: ./DadWritesTech
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          external_repository: dadwritestech/blog
+          github_token: ${{ secrets.DEPLOY_TOKEN }}
+          publish_dir: ./DadWritesTech/public
+          cname: www.dad-writes-tech.com
