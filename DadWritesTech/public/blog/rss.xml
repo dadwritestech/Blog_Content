@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="rss.xsl"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Dad Writes Tech Blog</title>
+        <link>https://www.dad-writes-tech.com/blog</link>
+        <description>Dad Writes Tech Blog</description>
+        <lastBuildDate>Mon, 10 Mar 2025 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <item>
+            <title><![CDATA[Windows 11's Context Menu: A Usability Downgrade? (And My Workaround)]]></title>
+            <link>https://www.dad-writes-tech.com/blog/windows-context-menu</link>
+            <guid>https://www.dad-writes-tech.com/blog/windows-context-menu</guid>
+            <pubDate>Mon, 10 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[A short write up on how to enable the old Windows Context Menu.]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="windows-11s-context-menu-a-usability-downgrade-and-my-workaround">Windows 11's Context Menu: A Usability Downgrade? (And My Workaround)<a href="https://www.dad-writes-tech.com/blog/windows-context-menu#windows-11s-context-menu-a-usability-downgrade-and-my-workaround" class="hash-link" aria-label="Direct link to Windows 11's Context Menu: A Usability Downgrade? (And My Workaround)" title="Direct link to Windows 11's Context Menu: A Usability Downgrade? (And My Workaround)">​</a></h2>
+<p>I still remember the first time I right-clicked something in Windows XP. I had no idea what a “context menu” was back then—I just knew that right-clicking felt like unlocking a <em>hidden cheat code</em> for my PC. Fast forward through Vista, 7, 8 (ugh), and 10, and I’ve gotten pretty comfortable with how Windows handles everyday tasks.</p>
+<p>But then Windows 11 came along. And… yeah. This new right-click menu? Not a fan.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-the-new-context-menu-feels-like-a-downgrade">Why the New Context Menu Feels Like a Downgrade<a href="https://www.dad-writes-tech.com/blog/windows-context-menu#why-the-new-context-menu-feels-like-a-downgrade" class="hash-link" aria-label="Direct link to Why the New Context Menu Feels Like a Downgrade" title="Direct link to Why the New Context Menu Feels Like a Downgrade">​</a></h2>
+<p>Microsoft decided, in its infinite wisdom, to <em>hide</em> most of the right-click options behind a “Show more options” button. Now, I sort of get the logic.</p>
+<ul>
+<li>Performance – Maybe a slimmer menu loads faster? (I never had an issue before, but okay.)</li>
+<li>Simplification – Casual users probably don’t need 90% of those options anyway.</li>
+</ul>
+<p>But for people like me—who right-click constantly throughout the day(mostly nervously refreshing.. <!-- -->:D<!-- -->)—this extra step feels like someone moved my coffee mug an inch to the left every time I reach for it. Small change, big annoyance.</p>
+<p>And here’s the kicker: the full menu is still there. Microsoft just buried it under an extra step, like some kind of twisted usability prank.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-shiftright-click-shortcut-a-band-aid-fix">The Shift+Right-Click Shortcut (A Band-Aid Fix)<a href="https://www.dad-writes-tech.com/blog/windows-context-menu#the-shiftright-click-shortcut-a-band-aid-fix" class="hash-link" aria-label="Direct link to The Shift+Right-Click Shortcut (A Band-Aid Fix)" title="Direct link to The Shift+Right-Click Shortcut (A Band-Aid Fix)">​</a></h2>
+<p>There <em>is</em> a workaround—if you hold <em>Shift</em> and Right-Click, it brings up the old-school full menu instantly. I found this out after an embarrassing amount of frustration, clicking “Show more options” like some kind of NPC stuck in a loop.</p>
+<p>Does it work? Yeah.</p>
+<p>Does it feel like an unnecessary extra step? Also yeah.</p>
+<p>It’s like adding a secret handshake to open your own fridge. <em>Why?</em></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-real-fix-bringing-back-the-classic-menu-registry-edit">The Real Fix: Bringing Back the Classic Menu (Registry Edit)<a href="https://www.dad-writes-tech.com/blog/windows-context-menu#the-real-fix-bringing-back-the-classic-menu-registry-edit" class="hash-link" aria-label="Direct link to The Real Fix: Bringing Back the Classic Menu (Registry Edit)" title="Direct link to The Real Fix: Bringing Back the Classic Menu (Registry Edit)">​</a></h2>
+<p>After realizing I was one click away from losing my mind, I did some digging. Turns out, you can restore the old menu permanently with a quick registry edit.</p>
+<p>Quick warning: Messing with the registry is like doing surgery on your OS—screw it up, and things can go sideways fast. Back up your registry before you try this.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="heres-how-to-fix-it">Here’s how to fix it<a href="https://www.dad-writes-tech.com/blog/windows-context-menu#heres-how-to-fix-it" class="hash-link" aria-label="Direct link to Here’s how to fix it" title="Direct link to Here’s how to fix it">​</a></h3>
+<ol>
+<li>
+<p>Open Command Prompt</p>
+<ul>
+<li>Hit <em>Win + R</em> (or use windows search, if you prefer it), type <code>cmd</code>, and press Enter.</li>
+</ul>
+</li>
+<li>
+<p>Paste this command and hit Enter:</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">reg add HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32 /ve /d "" /f</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p>Restart Explorer (or Just Reboot Your PC)</p>
+<ul>
+<li>Press <strong>Ctrl + Shift + Esc</strong> to open Task Manager.</li>
+<li>Find <strong>Windows Explorer</strong>, right-click it, and choose <strong>Restart</strong>.</li>
+</ul>
+</li>
+</ol>
+<p>And just like that—Boom! The classic context menu is back.</p>
+<blockquote>
+<p>If it did'nt work, it's likely you are not logged in with Admin permissions. If that is the case, contact your administrator to do this for you, or stick with using <em>Shift</em>+ Right-Click.</p>
+</blockquote>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="undoing-the-change-if-you-ever-want-to">Undoing the Change (If You Ever Want To)<a href="https://www.dad-writes-tech.com/blog/windows-context-menu#undoing-the-change-if-you-ever-want-to" class="hash-link" aria-label="Direct link to Undoing the Change (If You Ever Want To)" title="Direct link to Undoing the Change (If You Ever Want To)">​</a></h2>
+<p>If for some reason, you start <em>missing</em> the “Show more options” button (hey, you do you), here’s how to undo the tweak:</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">reg delete HKCU\SOFTWARE\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2} /f</span><br></span></code></pre></div></div>
+<p>Restart Explorer again (or your PC), and it’ll go back to the Windows 11 default.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="final-thoughts-microsoft-just-give-us-the-option-a-toggle-at-least">Final Thoughts: Microsoft, Just Give Us the Option (a toggle at least)<a href="https://www.dad-writes-tech.com/blog/windows-context-menu#final-thoughts-microsoft-just-give-us-the-option-a-toggle-at-least" class="hash-link" aria-label="Direct link to Final Thoughts: Microsoft, Just Give Us the Option (a toggle at least)" title="Direct link to Final Thoughts: Microsoft, Just Give Us the Option (a toggle at least)">​</a></h2>
+<p>Honestly, this never needed to be an issue in the first place. The new context menu isn’t <em>bad</em>—it just should’ve been optional. Let users choose between the new style and the classic menu. Problem solved.</p>
+<p>But knowing Microsoft? Yeah… I won’t hold my breath.</p>]]></content:encoded>
+            <category>Tech Guide</category>
+        </item>
+        <item>
+            <title><![CDATA[Tech Gadgets for the Modern Dad: Balancing Work, Play, and Family]]></title>
+            <link>https://www.dad-writes-tech.com/blog/tech-gadgets-for-the-modern-dad</link>
+            <guid>https://www.dad-writes-tech.com/blog/tech-gadgets-for-the-modern-dad</guid>
+            <pubDate>Tue, 20 Feb 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[A short write up discussing tech modern dad's can use.]]></description>
+            <content:encoded><![CDATA[<p>Hey there! Imagine our modern dad, a multitasking maestro, seamlessly juggling work, play, and family. To keep his superhero status, he's equipped with some cutting-edge gadgets. Let's dive into these tech marvels that make dad's life a symphony of efficiency and fun.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="the-ultimate-sidekick-smartwatch">The Ultimate Sidekick: Smartwatch<a href="https://www.dad-writes-tech.com/blog/tech-gadgets-for-the-modern-dad#the-ultimate-sidekick-smartwatch" class="hash-link" aria-label="Direct link to The Ultimate Sidekick: Smartwatch" title="Direct link to The Ultimate Sidekick: Smartwatch">​</a></h3>
+<p>Enter the realm of smartwatches, where the <strong>Apple Watch Series 7</strong> and <strong>Samsung Galaxy Watch 4</strong> reign supreme. These aren't just timekeepers; they're like having a personal assistant on your wrist. With features like ECG, blood oxygen monitoring, and an array of fitness tracking options, they're the epitome of wearable tech. Whether it's for health tracking or staying on top of notifications, these smartwatches keep dad connected and in control.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="the-focus-fortress-noise-canceling-headphones">The Focus Fortress: Noise-Canceling Headphones<a href="https://www.dad-writes-tech.com/blog/tech-gadgets-for-the-modern-dad#the-focus-fortress-noise-canceling-headphones" class="hash-link" aria-label="Direct link to The Focus Fortress: Noise-Canceling Headphones" title="Direct link to The Focus Fortress: Noise-Canceling Headphones">​</a></h3>
+<p>In the chaos of a home turned jungle gym, noise-canceling headphones like the <strong>Sony WH-1000XM4</strong> and <strong>Bose Noise Cancelling Headphones 700</strong> are dad's focus fortress. They offer an immersive audio experience, thanks to their top-tier noise cancellation and exceptional sound quality. These wireless wonders are perfect for dads looking to find their zen or dive into work with crystal-clear calls and long battery life.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="the-magical-maestros-smart-home-devices">The Magical Maestros: Smart Home Devices<a href="https://www.dad-writes-tech.com/blog/tech-gadgets-for-the-modern-dad#the-magical-maestros-smart-home-devices" class="hash-link" aria-label="Direct link to The Magical Maestros: Smart Home Devices" title="Direct link to The Magical Maestros: Smart Home Devices">​</a></h3>
+<p>Smart home devices, like the <strong>Amazon Echo (4th Gen)</strong> and <strong>Google Nest Hub</strong>, turn the home into a concert of convenience with voice-activated commands. From dimming lights for movie night to playing the kids' favorite tunes, these devices are the maestros of smart living. They bring home automation to life, making everyday tasks simpler and more enjoyable.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="the-portable-library-e-reader">The Portable Library: E-Reader<a href="https://www.dad-writes-tech.com/blog/tech-gadgets-for-the-modern-dad#the-portable-library-e-reader" class="hash-link" aria-label="Direct link to The Portable Library: E-Reader" title="Direct link to The Portable Library: E-Reader">​</a></h3>
+<p>For the dad who loves to unwind with a good book, the <strong>Amazon Kindle Paperwhite</strong> and <strong>Kobo Libra H2O</strong> are like holding a library in your hands. These e-readers, with their glare-free displays and digital libraries, make reading a pleasure anytime, anywhere. They're the perfect companions for dads looking to switch from a thrilling adventure to a parenting guide with just a tap.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="the-personal-trainer-fitness-tracker">The Personal Trainer: Fitness Tracker<a href="https://www.dad-writes-tech.com/blog/tech-gadgets-for-the-modern-dad#the-personal-trainer-fitness-tracker" class="hash-link" aria-label="Direct link to The Personal Trainer: Fitness Tracker" title="Direct link to The Personal Trainer: Fitness Tracker">​</a></h3>
+<p>And let's not forget the fitness trackers, like the <strong>Fitbit Charge 5</strong> and <strong>Garmin Venu Sq</strong>, which keep dad on track with his health and fitness goals. These gadgets are the epitome of wearable wellness, offering personalized fitness insights, activity tracking, and health monitoring. They're like having a personal coach, cheerleader, and health expert all rolled into one.</p>
+<p>With these gadgets in his arsenal, dad can effortlessly balance work, play, and family time, making every moment count. Whether it's through the seamless integration of smartwatches, the immersive experience of noise-canceling headphones, the convenience of smart home devices, the vast digital library of e-readers, or the personalized insights from fitness trackers, these tech tools are here to make dad's life not just easier, but truly extraordinary. So here's to the tech-savvy dads out there, navigating the modern world with a little help from their gadget friends!</p>]]></content:encoded>
+            <category>Tech Guides</category>
+        </item>
+        <item>
+            <title><![CDATA[To Upgrade or Not to Upgrade: The Casual Gamer's Dilemma in 2024]]></title>
+            <link>https://www.dad-writes-tech.com/blog/the-casual-gamers-dilemma-in-2024</link>
+            <guid>https://www.dad-writes-tech.com/blog/the-casual-gamers-dilemma-in-2024</guid>
+            <pubDate>Thu, 15 Feb 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[A short write up discussing system upgrade.]]></description>
+            <content:encoded><![CDATA[<p>Ah, the life of a casual gamer in 2024 – where the biggest decision we face is whether to spend our hard-earned cash on the latest GPU or invest in yet another round of artisanal avocado toast. With the gaming world all abuzz about Nvidia's RTX 4070 Ti Super and RTX 4080 Super, you might find yourself caught in a whirlwind of wonder, thinking, "Is it time for an upgrade?" But before you start raiding your piggy bank, let's dive into why embracing the status quo might just be your smartest move. Let's take a closer look at my own case, shall we?</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-case-for-contentment">The Case for Contentment<a href="https://www.dad-writes-tech.com/blog/the-casual-gamers-dilemma-in-2024#the-case-for-contentment" class="hash-link" aria-label="Direct link to The Case for Contentment" title="Direct link to The Case for Contentment">​</a></h2>
+<p>When it comes to my gaming lineup – think Overwatch 2 and Cities Skylines 2 – these titles are more about the joy of the game than pushing my Nvidia 3060 laptop GPU to its limits. Overwatch 2? It's all about that adrenaline-pumping moment of landing the perfect shot on a nimble Genji, less about the shimmering reflections in a digital puddle. And Cities Skylines 2? It's the thrill of mastering those maddening traffic jams, not the way the sunlight dances on the water. It's these crafted experiences and personal victories that truly define gaming, transcending the need for the latest specs to enjoy what really matters.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-wallet-friendly-wisdom">The Wallet-Friendly Wisdom<a href="https://www.dad-writes-tech.com/blog/the-casual-gamers-dilemma-in-2024#the-wallet-friendly-wisdom" class="hash-link" aria-label="Direct link to The Wallet-Friendly Wisdom" title="Direct link to The Wallet-Friendly Wisdom">​</a></h2>
+<p>Let's talk economics for a second. Eyeing that RTX 4080 Super might seem like a good idea until you equate it to the mountain of avocado toasts you'd be sacrificing. Picture this: a veritable Everest of creamy, green goodness swapped for a few extra frames per second. Would you really notice the difference while you're deep in strategy, trying to outmaneuver a crafty Sombra? This absurd comparison highlights the joy and memories that could be bought instead of just a fleeting upgrade in tech.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-future-proofing-fallacy">The Future-Proofing Fallacy<a href="https://www.dad-writes-tech.com/blog/the-casual-gamers-dilemma-in-2024#the-future-proofing-fallacy" class="hash-link" aria-label="Direct link to The Future-Proofing Fallacy" title="Direct link to The Future-Proofing Fallacy">​</a></h2>
+<p>Future-proofing in the tech world is like trying to catch smoke with your bare hands – a compelling but ultimately futile effort. Today's technological marvel is tomorrow's average Joe. By resisting the urge to upgrade at every turn, you're not falling behind; you're strategically biding your time, waiting for that monumental leap in innovation that truly changes the game. It's about making a move that counts, not just keeping up with the Joneses.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-compatibility-conundrum">The Compatibility Conundrum<a href="https://www.dad-writes-tech.com/blog/the-casual-gamers-dilemma-in-2024#the-compatibility-conundrum" class="hash-link" aria-label="Direct link to The Compatibility Conundrum" title="Direct link to The Compatibility Conundrum">​</a></h2>
+<p>Venturing down the upgrade path can quickly become a journey through a technological quagmire, where every "simple" change leads to another, and then another. Think of it as opening Pandora's box – what starts as a GPU upgrade spirals into a saga involving power supplies, cooling systems, and perhaps a new motherboard. It's a vivid reminder that in the world of tech, every action has a reaction, often more complex and costly than anticipated.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="embracing-the-good-enough">Embracing the Good Enough<a href="https://www.dad-writes-tech.com/blog/the-casual-gamers-dilemma-in-2024#embracing-the-good-enough" class="hash-link" aria-label="Direct link to Embracing the Good Enough" title="Direct link to Embracing the Good Enough">​</a></h2>
+<p>In the grand tapestry of gaming, it's not the specs that make the experience, but the stories we weave and the challenges we conquer. My current setup, much like a beloved underdog from a cult classic, might not have the latest gadgets and gizmos, but it's got heart. It's a testament to the power of creativity and resourcefulness, proving that you don't need the fastest, shiniest hardware to have a good time. This setup, with all its quirks and limitations, is a celebration of gaming at its most pure – fun, engaging, and endlessly surprising.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-verdict-hold-the-line">The Verdict: Hold the Line!<a href="https://www.dad-writes-tech.com/blog/the-casual-gamers-dilemma-in-2024#the-verdict-hold-the-line" class="hash-link" aria-label="Direct link to The Verdict: Hold the Line!" title="Direct link to The Verdict: Hold the Line!">​</a></h2>
+<p>So, to my fellow casual gamers, let's stand together, gamepads and keyboards held high, in defiance of the relentless push for the new. Let's invest in the games that bring us joy, the experiences that bring us together, and yes, even that extra round of avocado toast. The future will undoubtedly usher in GPUs that will make the RTX 4080 Super look quaint, and when that day comes, we'll be ready. But for now, let's savor our games, warts and all, and revel in the knowledge that the best upgrade is the one we didn't need to make. After all, in the world of gaming, it's the heart of the player, not the hardware, that truly makes the difference.</p>]]></content:encoded>
+            <category>General</category>
+        </item>
+        <item>
+            <title><![CDATA[What is a Retail Loyalty Program]]></title>
+            <link>https://www.dad-writes-tech.com/blog/retail-loyalty-program</link>
+            <guid>https://www.dad-writes-tech.com/blog/retail-loyalty-program</guid>
+            <pubDate>Sat, 03 Feb 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[A short write up explaining Retail Loyalty Programs.]]></description>
+            <content:encoded><![CDATA[<p>Ever wondered why some stores ask you to sign up for their "exclusive" clubs or offer you a card that promises rewards? Welcome to the world of Retail Loyalty Programs, a popular strategy businesses use to keep customers coming back for more.</p>
+<blockquote>
+<p><strong>Key Takeaways</strong></p>
+<ul>
+<li>Retail Loyalty Programs are strategic initiatives designed to foster customer retention and engagement by offering rewards for repeated business.</li>
+<li>These programs not only benefit customers through savings and personalized experiences but also provide retailers with valuable data and increased brand loyalty.</li>
+<li>Successful implementation requires careful consideration of costs, data security, system integration, and adaptability to changing customer preferences and market trends.</li>
+</ul>
+</blockquote>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-basics">The Basics<a href="https://www.dad-writes-tech.com/blog/retail-loyalty-program#the-basics" class="hash-link" aria-label="Direct link to The Basics" title="Direct link to The Basics">​</a></h2>
+<p>A Retail Loyalty Program is a structured marketing strategy designed by retailers to encourage customers to continue shopping at or using the services of businesses associated with each program. At its core, it's about creating a sense of belonging and appreciation for customers.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="how-it-works">How It Works<a href="https://www.dad-writes-tech.com/blog/retail-loyalty-program#how-it-works" class="hash-link" aria-label="Direct link to How It Works" title="Direct link to How It Works">​</a></h2>
+<p><strong>Membership</strong>: First, you sign up, often for free, providing basic information like your name, email, and sometimes preferences. In return, you might get a physical card, a digital card, or simply an account number tied to your profile.</p>
+<p><strong>Earning Points or Credits</strong>: Every time you make a purchase, you earn points, miles, or credits, depending on the program's type and structure. The more you shop, the more you earn. Sometimes, points can vary by product or service, incentivizing purchases in certain categories.</p>
+<p><strong>Benefits and Rewards</strong>: These points aren't just for show; they're your ticket to a variety of rewards. This could range from discounts, special offers, early access to sales, and exclusive deals to free products or services. Some programs even offer tiered memberships, where the benefits increase as you climb up the loyalty ladder.</p>
+<p><strong>Personalized Experience</strong>: Many loyalty programs use the data from your shopping habits to tailor offers and communications specifically to your interests. This personalized touch not only makes shopping more enjoyable but also more rewarding.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-mutual-benefit">The Mutual Benefit<a href="https://www.dad-writes-tech.com/blog/retail-loyalty-program#the-mutual-benefit" class="hash-link" aria-label="Direct link to The Mutual Benefit" title="Direct link to The Mutual Benefit">​</a></h2>
+<p>For customers, the appeal is clear: save money, gain rewards, and receive a personalized shopping experience. For retailers, loyalty programs offer invaluable customer data, increase retention rates, encourages brand advocacy, and boost overall sales. It's a win-win situation where your loyalty to a brand is recognized and rewarded.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="considerations-for-businesses">Considerations for Businesses<a href="https://www.dad-writes-tech.com/blog/retail-loyalty-program#considerations-for-businesses" class="hash-link" aria-label="Direct link to Considerations for Businesses" title="Direct link to Considerations for Businesses">​</a></h2>
+<p>Implementing loyalty programs involves careful planning around costs, as rewarding customers can be expensive. Businesses need to ensure rewards are enticing without undermining profits.</p>
+<p>Privacy and data security are paramount, as these programs often collect personal customer information. Integration with existing systems, like point-of-sale and CRM software, is crucial for seamless operation.</p>
+<p>Additionally, businesses must stay adaptive, updating the program to remain appealing and relevant to customer preferences and market trends, ensuring long-term engagement and value.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="few-examples">Few Examples<a href="https://www.dad-writes-tech.com/blog/retail-loyalty-program#few-examples" class="hash-link" aria-label="Direct link to Few Examples" title="Direct link to Few Examples">​</a></h2>
+<ul>
+<li>Starbucks Rewards: When you order through the Starbucks App, you accumulate reward points. These can be redeemed for free drinks, food, and Starbucks merchandise.</li>
+<li>Uber Rewards: Each dollar spent on Uber rides earns you points. These points can be used for benefits like priority pickups and flexible cancellations. Additionally, accumulating more points can unlock higher tiers with even greater rewards.</li>
+<li>Amazon Prime: By paying an annual fee, members gain access to a wide range of benefits. These include free 2-day shipping on numerous products, as well as access to Amazon's video and music streaming services, among others.</li>
+</ul>
+<p>So, the next time you're asked to join a loyalty program, you'll know exactly what's in store for you. Whether it's for your favorite coffee shop, clothing store, or online retailer, these programs are all about enhancing your shopping experience and building a lasting relationship with the brand.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="references">References<a href="https://www.dad-writes-tech.com/blog/retail-loyalty-program#references" class="hash-link" aria-label="Direct link to References" title="Direct link to References">​</a></h2>
+<p>I have used the following articles for my research:</p>
+<ul>
+<li><a href="https://www.investopedia.com/terms/l/loyalty-program.asp" target="_blank" rel="noopener noreferrer">Loyalty Program: Definition, Purposes, How It Works, Example</a></li>
+<li><a href="https://www.zendesk.co.uk/blog/loyalty-rewards/?_ga=2.212380436.1861318797.1707002223-703047045.1707002223" target="_blank" rel="noopener noreferrer">16 customer loyalty programmes of 2024 + how they work</a></li>
+<li><a href="https://www.shopify.com/blog/loyalty-program" target="_blank" rel="noopener noreferrer">What Is a Loyalty Program? 5 Best Examples</a></li>
+<li><a href="https://www.openloyalty.io/insider/best-retail-loyalty-programs" target="_blank" rel="noopener noreferrer">Loyalty program for retailers: 10 winning examples</a></li>
+</ul>]]></content:encoded>
+            <category>General</category>
+        </item>
+        <item>
+            <title><![CDATA[Sending a Message with a Picture on WhatsApp]]></title>
+            <link>https://www.dad-writes-tech.com/blog/sending-a-message-with-a-picture-on-whatsapp</link>
+            <guid>https://www.dad-writes-tech.com/blog/sending-a-message-with-a-picture-on-whatsapp</guid>
+            <pubDate>Sat, 03 Feb 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[A short write up on how to send pictures using WhatsApp.]]></description>
+            <content:encoded><![CDATA[<p>Enhance your WhatsApp conversations by sharing pictures. Whether capturing a moment on the fly or sharing a saved memory, you can make your conversations more personal and engaging. Additionally, you can choose the quality of the images you send, balancing between clarity and data usage.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="android-instructions">Android Instructions<a href="https://www.dad-writes-tech.com/blog/sending-a-message-with-a-picture-on-whatsapp#android-instructions" class="hash-link" aria-label="Direct link to Android Instructions" title="Direct link to Android Instructions">​</a></h3>
+<ol>
+<li>Open WhatsApp: Tap the WhatsApp icon on your device to start the app.</li>
+<li>Choose a Chat:<!-- -->
+<ol>
+<li>For existing chats, scroll to find the chat you wish to use.</li>
+<li>To start a new chat, tap the green chat icon at the bottom right and select a contact.</li>
+</ol>
+</li>
+<li>Select/Snap a Picture:<!-- -->
+<ol>
+<li>Tap the camera icon next to the text input area. This opens the camera view along with thumbnails of recently snapped pictures.</li>
+<li>You can capture a new picture by pressing the shutter button or select a recent picture from the presented thumbnails.</li>
+<li>Add a Caption (Optional): Type your message in the <strong>Add a caption…</strong> field.</li>
+<li>Select Image quality (Optional): See Image Quality for more information.</li>
+</ol>
+</li>
+<li>Share Your Picture: Hit the send button (resembling a paper airplane) to share your picture and message.</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="iphone-instructions">iPhone Instructions<a href="https://www.dad-writes-tech.com/blog/sending-a-message-with-a-picture-on-whatsapp#iphone-instructions" class="hash-link" aria-label="Direct link to iPhone Instructions" title="Direct link to iPhone Instructions">​</a></h3>
+<ol>
+<li>Open WhatsApp: Tap the WhatsApp icon on your device to start the app.</li>
+<li>Choose a Chat:<!-- -->
+<ol>
+<li>Scroll through your chats to find an existing conversation.</li>
+<li>To start a new chat, tap the <strong>+</strong> icon at the top right, then select <strong>New Chat</strong> and choose a contact.</li>
+</ol>
+</li>
+<li>Send a Picture:<!-- -->
+<ol>
+<li>Tap the camera icon next to the text input field. You'll see the camera view and thumbnails of recent photos.</li>
+<li>Either take a new photo or choose from the recent photos displayed at the bottom.</li>
+<li>Add a Caption (Optional): Enter your message in the <strong>Add a caption…</strong> area.</li>
+<li>Select Image quality (Optional): See Image Quality for more information.</li>
+</ol>
+</li>
+<li>Share Your Picture: Hit the send button (resembling a paper airplane) to share your picture and message.</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="quick-access-camera-feature-android--iphone">Quick Access Camera Feature (Android &amp; iPhone)<a href="https://www.dad-writes-tech.com/blog/sending-a-message-with-a-picture-on-whatsapp#quick-access-camera-feature-android--iphone" class="hash-link" aria-label="Direct link to Quick Access Camera Feature (Android &amp; iPhone)" title="Direct link to Quick Access Camera Feature (Android &amp; iPhone)">​</a></h3>
+<p>For moments that need to be captured and shared instantly:</p>
+<ol>
+<li>Tap the camera icon at the top of the WhatsApp home screen. This action opens the camera for a quick snap, with recent photos displayed for quick selection.</li>
+<li>After capturing or selecting your photo, choose the recipients from your contact list.</li>
+<li>Select Image quality (Optional): See Image Quality for more information.</li>
+<li>Add a caption if desired, then tap the send button to share your picture.</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="image-quality">Image Quality<a href="https://www.dad-writes-tech.com/blog/sending-a-message-with-a-picture-on-whatsapp#image-quality" class="hash-link" aria-label="Direct link to Image Quality" title="Direct link to Image Quality">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="selecting-image-quality-optional-for-android-and-iphone">Selecting Image Quality (Optional for Android and iPhone)<a href="https://www.dad-writes-tech.com/blog/sending-a-message-with-a-picture-on-whatsapp#selecting-image-quality-optional-for-android-and-iphone" class="hash-link" aria-label="Direct link to Selecting Image Quality (Optional for Android and iPhone)" title="Direct link to Selecting Image Quality (Optional for Android and iPhone)">​</a></h4>
+<p>Before sending your picture, you can choose the desired image quality:</p>
+<ul>
+<li>
+<p><strong>HD</strong>: Select this for higher clarity, especially suitable for detailed images. HD photos are larger in file size, which may affect sending times and data usage.</p>
+</li>
+<li>
+<p><strong>Standard</strong>: Choose this for a faster send. These images are compressed to reduce file size, which can be beneficial for quick sharing without significantly affecting the visual quality.</p>
+</li>
+</ul>
+<p>This option appears after you've selected your picture, allowing you to adjust the quality before sharing.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="using-the-attachment-feature">Using the Attachment Feature<a href="https://www.dad-writes-tech.com/blog/sending-a-message-with-a-picture-on-whatsapp#using-the-attachment-feature" class="hash-link" aria-label="Direct link to Using the Attachment Feature" title="Direct link to Using the Attachment Feature">​</a></h4>
+<p>For times when you want to send images in their original quality, using the attachment feature is the way to go. This method is perfect for sharing photos that will be viewed on larger screens or printed:</p>
+<ol>
+<li>Access Attachments: In your chat, tap the paperclip icon (Android) or the <strong>+</strong> icon (iPhone), then select <strong>Gallery</strong>.
+Choose Your Image: Browse your gallery and select the image you wish to send. This method does not compress the image, preserving its original quality.</li>
+<li>Send the Image: After selecting your image, you can add a caption if you like, then send it. Images sent this way are ideal for ensuring the highest quality, suitable for detailed viewing or printing.</li>
+</ol>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>WhatsApp lets you send files as large as 2GB. For smoother sending and receiving of big files, it's best to connect to a strong Wi-Fi network.</p></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="special-features">Special Features<a href="https://www.dad-writes-tech.com/blog/sending-a-message-with-a-picture-on-whatsapp#special-features" class="hash-link" aria-label="Direct link to Special Features" title="Direct link to Special Features">​</a></h3>
+<p>WhatsApp enhances your photo sharing experience with a suite of editing tools accessible after selecting or capturing a photo. These tools allow you to crop or rotate images, personalize with stickers or emojis, and add text or freehand drawings. You can apply these edits individually or combine them for creative effects.</p>
+<p>Additionally, WhatsApp supports sending multiple photos at once (up to 100 on Android and 30 on iPhone as of latest update), with the HD setting applying to all selected images. For artistic touches, swiping up on a chosen photo reveals a range of filters, offering various aesthetic enhancements.</p>
+<p>By understanding these options, you can optimize your image sharing on WhatsApp, ensuring your pictures look their best based on your needs and the recipient's viewing context.</p>
+<p>Don't hesitate to try out these features to make your chats more vibrant and personal!</p>]]></content:encoded>
+            <category>Tech Guide</category>
+        </item>
+        <item>
+            <title><![CDATA[GhostintheAttic]]></title>
+            <link>https://www.dad-writes-tech.com/blog/ghost-in-the-attic</link>
+            <guid>https://www.dad-writes-tech.com/blog/ghost-in-the-attic</guid>
+            <pubDate>Wed, 24 Jan 2024 10:34:54 GMT</pubDate>
+            <description><![CDATA[A short haunted adventure.]]></description>
+            <content:encoded><![CDATA[<p>Max was a 12-year-old boy who lived with his father. He was very healthy, a bit too healthy, one can say. He was round like a tomato, and that's what his classmates used to call him. He wasn't very popular and didn't have any friends. They had recently moved to a new city where his father got a new job and had bought a new house on the outskirts of the town because it was a bit close to his work and Max's new School.</p>
+<p>Max was very nervous on his first day at School, it was the middle of the year, and he will be the new kid in the class. His first day at School went exceptionally uneventful, and he couldn't make any friends. He was an introvert, after all.</p>
+<p>But in the evening, on the way back home, a girl, one of his classmates, came to him while everyone was about to leave, "Do you know where you live?" she asked, speaking frantically. "I think I do," said Max, looking confused.</p>
+<p>"That's not what I meant. Did you know the house you live in is haunted?" she asked excitedly. Max thought hard. He knew he had a chance of making some friends if he made up a story about some ghosts. So he went on with her story.</p>
+<p>"I heard people say that and heard some noises in the middle of the night." He said, looking awkwardly at her. She and everyone else in the room were pretty excited.</p>
+<p>They immediately offered to come home with him and investigate.</p>
+<p>That evening, 5 of his new classmates got to his home by 8 PM as his dad would be working till late at night, and he would be alone in the house. He switched off the lights to add to the scare of what was already in the talk a haunted house. He would be the hero by not being frightened in front of his new friends.</p>
+<p>They started investigating the house. As it was dark, everything looked creepy. The old statues that were part of the purchase were left without a hint of cleaning. The second floor, which no one had used, was submerged in an ocean of dust. Spiders had spun their world of webs throughout.</p>
+<p>After an hour of investigation, the kids were all feeling relaxed. They had called out to ghosts and spirits but received no response. Suddenly they heard some strange noise coming from the attic of the second floor. Everyone was terrified. Not a single person dared to take another step. Max was ecstatic; he was going to investigate and be the hero that saved the day. Even though everyone urged him not to, he went towards the attic.</p>
+<p>It was a windy evening. Windows started fluttering, and there was a sudden sound from the attic. Everyone was literally petrified. Max went on towards the attic, ignoring the screaming girl. One of his classmates called the police and informed them about the scene they were in. The police responded immediately, as recent cases of intruders were rising.</p>
+<p>Soon two nearby officers arrived at Max's building and made their way into the house. They had their guns out, being positively sure about an intruder. Soon they reached the second floor and asked Max to not open the attic. They went in as the kids watched with visible tension. Police opened the door to the attic in the corner and returned with a wooden stick covered in white cloth attached to a rope stuck to the windows. Whenever the windows fluttered because of the wind, the rope attached to the wooden stick would hit the wall and make a sound. All the kids thought it was a ghost that was causing the noises.</p>
+<p>Officers understood it was a prank played by Max. They left after lecturing him about the seriousness of the situation. All his classmates were angry at his ploy to get everyone's attention. Max realized his mistake and told everyone what he had gone through and why he did that.</p>
+<p>Later his classmates accepted his apology, and they all became good friends.</p>
+<p><em>Life is what you make of it; you are who you are, inside or out. If you want other people to respect you, give them the respect they deserve. Be you, and you will be accepted by everyone. Everyone is unique in their own way, don't let anyone tell you any different. When we pretend to be someone we are not, it won't bring joy to anyone. Not even to yourself.</em></p>
+<p><em>The saying goes, "Be who you are and say what you feel because those who mind don't matter, and those who matter don't mind."</em></p>]]></content:encoded>
+            <category>Short Story</category>
+        </item>
+        <item>
+            <title><![CDATA[Test 1]]></title>
+            <link>https://www.dad-writes-tech.com/blog/testpost</link>
+            <guid>https://www.dad-writes-tech.com/blog/testpost</guid>
+            <pubDate>Wed, 24 Jan 2024 10:34:54 GMT</pubDate>
+            <description><![CDATA[This is a test post]]></description>
+            <category>Test</category>
+        </item>
+        <item>
+            <title><![CDATA[Test 2]]></title>
+            <link>https://www.dad-writes-tech.com/blog/testpost2</link>
+            <guid>https://www.dad-writes-tech.com/blog/testpost2</guid>
+            <pubDate>Wed, 24 Jan 2024 10:34:54 GMT</pubDate>
+            <description><![CDATA[This is a test post #2]]></description>
+            <content:encoded><![CDATA[<div class="language-JSON language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">"This"</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">"is code"</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre></div></div>]]></content:encoded>
+            <category>Test</category>
+        </item>
+    </channel>
+</rss>
