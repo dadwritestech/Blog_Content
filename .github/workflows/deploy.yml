@@ -18,6 +18,9 @@ jobs:
           node-version: 18
           cache: npm
 
+      - name: List DadWritesTech contents
+        run: ls -l ./DadWritesTech
+
       - name: Install dependencies
         run: npm install
         working-directory: ./DadWritesTech
