@@ -17,6 +17,7 @@ jobs:
         with:
           node-version: 18
           cache: npm
+          cache-dependency-path: ./DadWritesTech/package-lock.json
 
       - name: List DadWritesTech contents
         run: ls -l ./DadWritesTech
