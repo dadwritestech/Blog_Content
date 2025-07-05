@@ -26,6 +26,10 @@
             line-height: 1.6;
         }
 
+        main {
+            background-color: var(--dark-bg);
+        }
+
         /* Animated Grid Background */
         .grid-bg {
             position: fixed;
@@ -172,6 +176,7 @@
             padding: 0 2rem;
             position: relative;
             overflow: hidden;
+            background: var(--dark-bg);
         }
 
         .hero-container {

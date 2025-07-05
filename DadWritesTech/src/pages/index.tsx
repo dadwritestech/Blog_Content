@@ -54,31 +54,12 @@ export default function Home(): ReactNode {
         card.removeEventListener('mouseleave', handleMouseLeave);
       };
     });
-
-    // Scroll progress indicator (global, but included here for now)
-    const scrollProgress = document.querySelector('.scroll-progress') as HTMLElement;
-    const handleScroll = () => {
-      const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-      if (scrollProgress) {
-        scrollProgress.style.width = scrollPercent + '%';
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
   }, []);
 
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />">
-      <div className="grid-bg"></div>
-      <div className="scroll-indicator">
-        <div className="scroll-progress"></div>
-      </div>
-
       <main>
         <section className="hero">
           <div className="hero-container">
