@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dad Writes Tech - Digital Chaos Organized</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-cyan: #00ffff;
+            --neon-pink: #ff0080;
+            --neon-green: #39ff14;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #050505;
+            --text-light: #e0e0e0;
+            --text-dim: #888;
+            --accent-orange: #ff6b35;
+            --grid-color: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Grid Background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Glitch Effect */
+        .glitch {
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            animation: glitch1 0.5s infinite;
+            color: var(--neon-cyan);
+            z-index: -1;
+        }
+
+        .glitch::after {
+            animation: glitch2 0.5s infinite;
+            color: var(--neon-pink);
+            z-index: -2;
+        }
+
+        @keyframes glitch1 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+
+        @keyframes glitch2 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(-2px, 2px); }
+            80% { transform: translate(-2px, -2px); }
+        }
+
+        /* Header - Terminal Style */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--neon-cyan);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--neon-green);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            position: relative;
+        }
+
+        .logo::before {
+            content: '> ';
+            color: var(--neon-cyan);
+        }
+
+        .logo::after {
+            content: '_';
+            animation: blink 1s infinite;
+            color: var(--neon-pink);
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0;
+            font-size: 0.9rem;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .nav-menu a:hover {
+            color: var(--neon-cyan);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+            background: rgba(0, 255, 255, 0.05);
+        }
+
+        /* Hero Section - Asymmetric Layout */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            transform: skewY(-2deg);
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(255, 0, 128, 0.05));
+            border-left: 3px solid var(--neon-cyan);
+            position: relative;
+        }
+
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink), var(--neon-green));
+            z-index: -1;
+            filter: blur(1px);
+            opacity: 0.3;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            line-height: 0.9;
+            margin-bottom: 1rem;
+            transform: skewY(2deg);
+        }
+
+        .hero-title .word-1 {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        .hero-title .word-2 {
+            color: var(--neon-pink);
+            text-shadow: 0 0 20px var(--neon-pink);
+        }
+
+        .hero-title .word-3 {
+            color: var(--neon-green);
+            text-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            transform: skewY(2deg);
+        }
+
+        .hero-ascii {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--neon-green);
+            line-height: 1.2;
+            white-space: pre;
+            transform: skewY(2deg);
+            opacity: 0.8;
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 400px;
+            transform: skewY(2deg);
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 4s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        .floating-icon:nth-child(1) {
+            top: 10%;
+            left: 20%;
+            color: var(--neon-cyan);
+            animation-delay: 0s;
+        }
+
+        .floating-icon:nth-child(2) {
+            top: 30%;
+            right: 15%;
+            color: var(--neon-pink);
+            animation-delay: 1s;
+        }
+
+        .floating-icon:nth-child(3) {
+            bottom: 20%;
+            left: 10%;
+            color: var(--neon-green);
+            animation-delay: 2s;
+        }
+
+        .floating-icon:nth-child(4) {
+            bottom: 40%;
+            right: 30%;
+            color: var(--accent-orange);
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Content Sections - Brutalist Cards */
+        .content-section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .section-subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-dim);
+            font-size: 1rem;
+        }
+
+        .chaos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .chaos-card {
+            background: var(--darker-bg);
+            border: 2px solid var(--grid-color);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .chaos-card:nth-child(1) {
+            transform: rotate(-1deg);
+            border-color: var(--neon-cyan);
+        }
+
+        .chaos-card:nth-child(2) {
+            transform: rotate(1deg);
+            border-color: var(--neon-pink);
+        }
+
+        .chaos-card:nth-child(3) {
+            transform: rotate(-0.5deg);
+            border-color: var(--neon-green);
+        }
+
+        .chaos-card:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .chaos-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .chaos-card:hover::before {
+            left: 100%;
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--grid-color);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--dark-bg);
+            border: 2px solid currentColor;
+            transform: rotate(45deg);
+        }
+
+        .card-icon span {
+            transform: rotate(-45deg);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: currentColor;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-description {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .card-stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        .stat {
+            background: var(--grid-color);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0;
+            color: var(--text-light);
+        }
+
+        .card-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 2px solid currentColor;
+            color: currentColor;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: currentColor;
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .card-link:hover::before {
+            left: 0;
+        }
+
+        .card-link:hover {
+            color: var(--dark-bg);
+        }
+
+        /* Terminal Footer */
+        footer {
+            background: var(--darker-bg);
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--neon-cyan);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .footer-terminal {
+            background: var(--dark-bg);
+            border: 1px solid var(--neon-green);
+            padding: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.5rem;
+            color: var(--text-dim);
+        }
+
+        .terminal-line span {
+            color: var(--neon-green);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: flex-end;
+        }
+
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--neon-cyan);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-content {
+                transform: none;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .chaos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chaos-card {
+                transform: none !important;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+        }
+
+        /* Scroll Indicators */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--darker-bg);
+            z-index: 1001;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink), var(--neon-green));
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="scroll-indicator">
+        <div class="scroll-progress"></div>
+    </div>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">dad_writes_tech</a>
+            <ul class="nav-menu">
+                <li><a href="#about">[about]</a></li>
+                <li><a href="#blog">[blog]</a></li>
+                <li><a href="#projects">[projects]</a></li>
+                <li><a href="#gaming">[gaming]</a></li>
+                <li><a href="#tools">[tools]</a></li>
+                <li><a href="#contact">[contact]</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="word-1 glitch" data-text="DAD">DAD</span><br>
+                    <span class="word-2 glitch" data-text="WRITES">WRITES</span><br>
+                    <span class="word-3 glitch" data-text="TECH">TECH</span>
+                </h1>
+                <p class="hero-subtitle">// digital_chaos_organized.exe</p>
+                <div class="hero-ascii">
+    ╔══════════════════════════════════╗
+    ║  WHERE PARENTING MEETS PIXELS    ║
+    ║  AND CODE MEETS COFFEE BREAKS    ║
+    ║  TECHNICAL WRITING FOR HUMANS    ║
+    ╚══════════════════════════════════╝
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-elements">
+                    <div class="floating-icon">💻</div>
+                    <div class="floating-icon">🎮</div>
+                    <div class="floating-icon">🔧</div>
+                    <div class="floating-icon">☕</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="section-header">
+            <h2 class="section-title">Digital Domains</h2>
+            <p class="section-subtitle">// exploring_the_intersection_of_tech_and_life</p>
+        </div>
+
+        <div class="chaos-grid">
+            <div class="chaos-card" style="color: var(--neon-cyan);">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <span>💻</span>
+                    </div>
+                    <h3 class="card-title">Tech Guides</h3>
+                </div>
+                <div class="card-content">
+                    <p class="card-description">
+                        Raw, unfiltered technical documentation for real-world problems. 
+                        No corporate fluff, just solutions that work when you're debugging at 2 AM.
+                    </p>
+                    <div class="card-stats">
+                        <span class="stat">PRACTICAL</span>
+                        <span class="stat">TESTED</span>
+                        <span class="stat">COFFEE-DRIVEN</span>
+                    </div>
+                    <a href="#" class="card-link">ACCESS_GUIDES</a>
+                </div>
+            </div>
+
+            <div class="chaos-card" style="color: var(--neon-pink);">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <span>🎮</span>
+                    </div>
+                    <h3 class="card-title">Gaming Insights</h3>
+                </div>
+                <div class="card-content">
+                    <p class="card-description">
+                        Gaming reviews and insights for adults who have responsibilities but still need to save the world. 
+                        Reviews that respect your time and wallet.
+                    </p>
+                    <div class="card-stats">
+                        <span class="stat">ADULT-FOCUSED</span>
+                        <span class="stat">TIME-CONSCIOUS</span>
+                        <span class="stat">HONEST</span>
+                    </div>
+                    <a href="#" class="card-link">LEVEL_UP</a>
+                </div>
+            </div>
+
+            <div class="chaos-card" style="color: var(--neon-green);">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <span>🔧</span>
+                    </div>
+                    <h3 class="card-title">DIY Projects</h3>
+                </div>
+                <div class="card-content">
+                    <p class="card-description">
+                        Weekend warrior projects that won't destroy your marriage or budget. 
+                        Tested by someone who actually has to explain failures to their spouse.
+                    </p>
+                    <div class="card-stats">
+                        <span class="stat">FAMILY-TESTED</span>
+                        <span class="stat">BUDGET-AWARE</span>
+                        <span class="stat">REALISTIC</span>
+                    </div>
+                    <a href="#" class="card-link">BUILD_STUFF</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-terminal">
+                <div class="terminal-line">dad@tech:~$ <span>whoami</span></div>
+                <div class="terminal-line">Technical writer, parent, caffeine addict</div>
+                <div class="terminal-line">dad@tech:~$ <span>pwd</span></div>
+                <div class="terminal-line">/home/dad/writes/tech</div>
+                <div class="terminal-line">dad@tech:~$ <span>echo "thanks for reading"</span></div>
+                <div class="terminal-line">thanks for reading</div>
+            </div>
+            <div class="footer-links">
+                <a href="#">[rss]</a>
+                <a href="#">[github]</a>
+                <a href="#">[twitter]</a>
+                <a href="#">[email]</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.querySelector('.scroll-progress');
+            const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
+
+        // Glitch effect on title
+        const glitchElements = document.querySelectorAll('.glitch');
+        glitchElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                element.style.animation = 'none';
+                element.offsetHeight; // Trigger reflow
+                element.style.animation = 'glitch1 0.1s infinite';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                element.style.animation = '';
+            });
+        });
+
+        // Random chaos card animations
+        const chaosCards = document.querySelectorAll('.chaos-card');
+        chaosCards.forEach((card, index) => {
+            card.addEventListener('mouseenter', () => {
+                const randomRotation = (Math.random() - 0.5) * 4;
+                card.style.transform = `rotate(${randomRotation}deg) scale(1.05)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                const originalRotations = [-1, 1, -0.5];
+                card.style.transform = `rotate(${originalRotations[index]}deg) scale(1)`;
+            });
+        });
+
+        // Terminal typing effect
+        const terminalLines = document.querySelectorAll('.terminal-line');
+        terminalLines.forEach((line, index) => {
+            line.style.opacity = '0';
+            setTimeout(() => {
+                line.style.opacity = '1';
+                line.style.transition = 'opacity 0.5s ease';
+            }, index * 300);
+        });
+    </script>
+</body>
+</html>

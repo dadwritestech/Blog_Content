@@ -18,3 +18,11 @@ techGuides:
   label: Tech Guides
   description: "Guides and tutorials related to technology."
   permalink: /tags/techguides
+wifi:
+  label: Wi-Fi
+  description: "Posts related to Wi-Fi technology and networking."
+  permalink: /tags/wifi
+home-networking:
+  label: Home Networking
+  description: "Guides and insights on home network setup and optimization."
+  permalink: /tags/home-networking

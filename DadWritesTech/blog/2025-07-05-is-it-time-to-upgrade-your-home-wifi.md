@@ -10,6 +10,8 @@ tags: [wifi, techguide, home-networking]
 
 Let's just get that out of the way. It happens. One minute everything is fine, the next you're staring at a buffering wheel while your kids complain about lag. The modern home is a digital warzone, with phones, laptops, TVs, and a dozen other smart gadgets all fighting for bandwidth.
 
+<!-- truncate -->
+
 The inevitable question comes up: will buying a new router with a bigger number on the box solve anything? Or is it just more marketing noise? As an architect of systems, I can tell you the answer is "it depends." Let's dismantle the problem and build a clear answer.
 
 ## Wi-Fi Generations in a Nutshell
