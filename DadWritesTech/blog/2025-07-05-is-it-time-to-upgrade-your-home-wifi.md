@@ -2,7 +2,7 @@
 title: Is It Time to Upgrade Your Home Wi-Fi? Understanding Wi-Fi 6, 6E, and 7 in Plain English
 description: A no-nonsense guide to the latest Wi-Fi standards (Wi-Fi 6, 6E, and 7), explaining what they are and helping you decide if an upgrade is actually necessary for your home.
 slug: is-it-time-to-upgrade-your-home-wifi
-authors: dadwrites
+authors: [DadWritesTech]
 tags: [wifi, techguide, home-networking]
 ---
 
