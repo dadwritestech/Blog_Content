@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Link from '@docusaurus/Link';
-import './styles.css'; // Import the new CSS file
 
 function Footer() {
   useEffect(() => {
