@@ -58,9 +58,10 @@ const config: Config = {
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
           blogSidebarCount: 0,
+          blogSidebarTitle: 'All posts',
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: ['./src/css/custom.css', './src/css/custom-blog.css'],
         },
         googleTagManager: {
           containerId: 'G-L1NH30EXTT',
