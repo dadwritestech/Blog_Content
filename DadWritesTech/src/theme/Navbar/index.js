@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import Link from '@docusaurus/Link';
-import './styles.css'; // Import the new CSS file
 
 export default function Navbar() {
   const logoRef = useRef(null);
