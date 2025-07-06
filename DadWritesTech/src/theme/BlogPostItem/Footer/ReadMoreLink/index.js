@@ -13,7 +13,7 @@ function ReadMoreLabel() {
   );
 }
 import clsx from 'clsx'; // Import clsx
-import cardStyles from '../../../Container/styles.module.css'; // Styles from the card
+import cardStyles from '../../Container/styles.module.css'; // Corrected path
 
 export default function BlogPostItemFooterReadMoreLink(props) {
   const {blogPostTitle, ...linkProps} = props;
