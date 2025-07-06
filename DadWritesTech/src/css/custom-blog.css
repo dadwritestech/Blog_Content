@@ -6,3 +6,12 @@
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
   border-color: var(--neon-cyan);
 }
+
+#__blog-post-container {
+  padding-top: var(--ifm-navbar-height) !important;
+}
+
+.blog-list-page main {
+  max-width: 960px; /* Adjust as needed */
+  margin: 0 auto;
+}
