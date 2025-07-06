@@ -1,3 +1,4 @@
-.blog-list-page {
-  padding-top: var(--ifm-navbar-height);
+.blog-list-page .chaos-card:hover {
+  transform: none;
+  box-shadow: 0 0 20px var(--neon-cyan);
 }
