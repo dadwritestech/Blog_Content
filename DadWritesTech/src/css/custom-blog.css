@@ -7,11 +7,8 @@
   border-color: var(--neon-cyan);
 }
 
-#__blog-post-container {
-  padding-top: var(--ifm-navbar-height) !important;
-}
-
-.blog-list-page main {
+.blog-post-page main {
   max-width: 960px; /* Adjust as needed */
   margin: 0 auto;
+  padding-top: calc(var(--ifm-navbar-height) + 2rem) !important; /* More aggressive padding */
 }
