@@ -173,13 +173,7 @@
         }
 
         /* Hero Section - Asymmetric Layout */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 2rem;
-            position: relative;
-            overflow: hidden;
+        main > section.hero {
             background: var(--dark-bg);
         }
 

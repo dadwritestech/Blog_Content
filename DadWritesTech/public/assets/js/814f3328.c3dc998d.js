@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_portfolio=self.webpackChunkdocusaurus_portfolio||[]).push([[7472],{5513:s=>{s.exports=JSON.parse('{"title":"Recent posts","items":[]}')}}]);

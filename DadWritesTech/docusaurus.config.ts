@@ -57,9 +57,7 @@ const config: Config = {
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
-          blogSidebarTitle: 'Table of Contents',
-          blogSidebarCount: 'custom',
-          blogSidebarItems: [],
+          blogSidebarCount: 0,
         },
         theme: {
           customCss: './src/css/custom.css',
