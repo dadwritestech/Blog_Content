@@ -1,8 +1,26 @@
-.blog-list-page article {
-  transition: all 0.3s ease;
+/* Apply chaos-grid styling to the main content area of the blog list page */
+.blog-list-page main {
+  display: grid;
+  /* Adjust minmax for typical blog post card sizes, considering padding/margins within the card */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem; /* Or var(--ifm-spacing-lg) or similar theme variable */
+  padding-top: 1rem; /* Instead of margin-top, to ensure grid alignment works well */
 }
 
-.blog-list-page article:hover {
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-  border-color: var(--neon-cyan);
-}
+/*
+  The hover effects are now handled by .chaosCard in
+  DadWritesTech/src/theme/BlogPostItem/Container/styles.module.css
+
+  Original .blog-list-page article:hover styles are removed as they are superseded.
+*/
+
+/*
+  Note on card rotations:
+  The original .chaos-card:nth-child(1/2/3) rotations from possible_style.css
+  are not applied here because reliably targeting nth-child across different numbers
+  of posts and potential Docusaurus DOM structures can be fragile.
+  If a slight, uniform tilt is desired, it could be added to the .chaosCard style itself
+  in DadWritesTech/src/theme/BlogPostItem/Container/styles.module.css.
+  e.g., .chaosCard { transform: rotate(-0.25deg); }
+  .chaosCard:hover { transform: rotate(0deg) scale(1.05); }
+*/

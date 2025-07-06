@@ -12,8 +12,14 @@ function ReadMoreLabel() {
     </b>
   );
 }
+import clsx from 'clsx'; // Import clsx
+import cardStyles from '../../../Container/styles.module.css'; // Styles from the card
+
 export default function BlogPostItemFooterReadMoreLink(props) {
   const {blogPostTitle, ...linkProps} = props;
+  // The className prop might be passed down by BlogPostItemFooter, so include it
+  const { className, ...restLinkProps } = linkProps;
+
   return (
     <Link
       aria-label={translate(
@@ -25,7 +31,8 @@ export default function BlogPostItemFooterReadMoreLink(props) {
         },
         {title: blogPostTitle},
       )}
-      {...linkProps}>
+      className={clsx(cardStyles.cardLink, className)} // Apply cardLink style
+      {...restLinkProps}>
       <ReadMoreLabel />
     </Link>
   );
