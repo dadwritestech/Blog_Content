@@ -5,6 +5,8 @@ import {ThemeClassNames} from '@docusaurus/theme-common';
 import EditMetaRow from '@theme/EditMetaRow';
 import TagsListInline from '@theme/TagsListInline';
 import ReadMoreLink from '@theme/BlogPostItem/Footer/ReadMoreLink';
+import cardStyles from '../Container/styles.module.css'; // Styles from the card
+
 export default function BlogPostItemFooter() {
   const {metadata, isBlogPostPage} = useBlogPost();
   const {
@@ -56,7 +58,7 @@ export default function BlogPostItemFooter() {
   // BlogPost footer - list view
   else {
     return (
-      <footer className="row docusaurus-mt-lg">
+      <footer className={clsx("row docusaurus-mt-lg", cardStyles.cardStats)}>
         {tagsExists && (
           <div className={clsx('col', {'col--9': truncatedPost})}>
             <TagsListInline tags={tags} />
