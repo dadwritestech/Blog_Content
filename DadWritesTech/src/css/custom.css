@@ -31,7 +31,7 @@
         }
 
         :root {
-            --ifm-navbar-height: 60px; /* Define a default navbar height */
+            --ifm-navbar-height: 80px; /* Increased navbar height */
         }
 
         /* Animated Grid Background */
