@@ -30,6 +30,10 @@
             background-color: var(--dark-bg);
         }
 
+        :root {
+            --ifm-navbar-height: 60px; /* Define a default navbar height */
+        }
+
         /* Animated Grid Background */
         .grid-bg {
             position: fixed;
