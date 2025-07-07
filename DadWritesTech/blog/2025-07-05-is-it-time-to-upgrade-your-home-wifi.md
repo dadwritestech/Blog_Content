@@ -55,13 +55,17 @@ Honestly, if your current router is more than four years old, this is your new b
 ### You could actually benefit from Wi-Fi 6E if...
 
 *   You live in an apartment and can see fifty different Wi-Fi networks from your couch. That congestion is real.
+
 *   You’re a serious gamer or streamer, and latency is your sworn enemy.
+
 *   You own a brand-new phone or high-end laptop and want to use the advanced features you paid for.
 
 ### Just hold off on Wi-Fi 7 unless...
 
 *   You are the person who has to have the newest gadget, period.
+
 *   You have a multi-gig internet plan (2 Gbps or faster) piped into your house.
+
 *   Your job involves moving enormous files wirelessly between computers at home.
 
 ## The Catch—And Don't Miss This Part

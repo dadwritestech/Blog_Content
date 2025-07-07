@@ -61,7 +61,7 @@ const config: Config = {
           blogSidebarTitle: 'All posts',
         },
         theme: {
-          customCss: ['./src/css/custom.css', './src/css/custom-blog.css'],
+          customCss: undefined,
         },
         googleTagManager: {
           containerId: 'G-L1NH30EXTT',
@@ -84,8 +84,6 @@ const config: Config = {
         {to: '/blog', label: 'Blog', position: 'left'},
         {to: '/projects', label: 'Projects', position: 'left'},
         {to: '/gaming', label: 'Gaming', position: 'left'},
-        {to: '/annual-mileage-calculator', label: 'Annual Mileage Calculator', position: 'left'},
-        {to: '/contraction-timer', label: 'Pregnancy Contraction Timer', position: 'left'},
         
         {to: '/contact', label: 'Contact me', position: 'left'},
       ],
