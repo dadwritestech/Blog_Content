@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import './styles.css';
+import '../css/TextFormatter.css';
 
 // Comprehensive Unicode character maps for various styles
 const unicodeMaps = {
