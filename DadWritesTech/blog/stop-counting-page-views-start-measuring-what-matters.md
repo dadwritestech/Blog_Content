@@ -1,6 +1,6 @@
 ---
 title: "Stop Counting Page Views. Start Measuring What Matters."
-authors: [dadwritestech]
+authors: [DadWritesTech]
 tags: [techguide, general]
 description: "Engineers live and die by DORA metrics. So why are most documentation teams still talking about page views?"
 ---
