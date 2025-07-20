@@ -39,8 +39,26 @@ const TextFormatter = () => {
     if (style === 'strikethrough') {
       return inputText.split('').map(char => char + '\u0336').join('');
     }
+    if (style === 'strikethrough-alt') {
+      return inputText.split('').map(char => char + '\u0335').join('');
+    }
+    if (style === 'strikethrough-double') {
+      return inputText.split('').map(char => char + '\u0336\u0336').join('');
+    }
     if (style === 'underline') {
       return inputText.split('').map(char => char + '\u0332').join('');
+    }
+    if (style === 'underline-double') {
+      return inputText.split('').map(char => char + '\u0333').join('');
+    }
+    if (style === 'underline-dotted') {
+      return inputText.split('').map(char => char + '\u0324').join('');
+    }
+    if (style === 'overline') {
+      return inputText.split('').map(char => char + '\u0305').join('');
+    }
+    if (style === 'crossout') {
+      return inputText.split('').map(char => char + '\u0338').join('');
     }
     const map = unicodeMaps[style];
     if (!map) return inputText;
@@ -85,7 +103,13 @@ const TextFormatter = () => {
     { key: 'script', title: 'Script' },
     { key: 'doublestruck', title: 'Doublestruck' },
     { key: 'strikethrough', title: 'Strikethrough' },
+    { key: 'strikethrough-alt', title: 'Strikethrough Alt' },
+    { key: 'strikethrough-double', title: 'Double Strike' },
     { key: 'underline', title: 'Underline' },
+    { key: 'underline-double', title: 'Double Underline' },
+    { key: 'underline-dotted', title: 'Dotted Underline' },
+    { key: 'overline', title: 'Overline' },
+    { key: 'crossout', title: 'Cross Out' },
   ];
 
   return (
@@ -103,8 +127,9 @@ const TextFormatter = () => {
             <div className="toolbar">
               <button onClick={() => handleStyleButtonClick('bold')}>Bold</button>
               <button onClick={() => handleStyleButtonClick('italic')}>Italic</button>
-              <button onClick={() => handleStyleButtonClick('strikethrough')}>Strikethrough</button>
+              <button onClick={() => handleStyleButtonClick('strikethrough')}>Strike</button>
               <button onClick={() => handleStyleButtonClick('underline')}>Underline</button>
+              <button onClick={() => handleStyleButtonClick('overline')}>Overline</button>
             </div>
             <textarea
               ref={mainEditorRef}
