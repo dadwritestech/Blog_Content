@@ -1,22 +1,4 @@
-/* --- Global Styles & Variables --- */
-:root {
-  --primary-color: #0a66c2; /* LinkedIn Blue */
-  --background-color: #f3f2ef; /* LinkedIn Light Gray Background */
-  --card-background-color: #ffffff;
-  --text-color: #191919;
-  --text-secondary-color: #666666;
-  --border-color: #e0e0e0;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --border-radius: 8px;
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  line-height: 1.6;
-}
+/* TextFormatter Component - Uses Docusaurus CSS Variables */
 
 /* --- App Container & Header/Footer --- */
 .app-container {
@@ -31,14 +13,14 @@ header, footer {
 }
 
 header h1 {
-  color: var(--primary-color);
+  color: var(--ifm-color-primary);
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
 }
 
 footer {
     margin-top: 2rem;
-    color: var(--text-secondary-color);
+    color: var(--ifm-color-content-secondary);
     font-size: 0.9rem;
 }
 
@@ -50,19 +32,19 @@ footer {
 }
 
 .card {
-  background-color: var(--card-background-color);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
+  background-color: var(--ifm-card-background-color);
+  border-radius: var(--ifm-card-border-radius);
+  box-shadow: var(--ifm-global-shadow-md);
   padding: 1.5rem;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
 }
 
 .card h2 {
     margin-top: 0;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--ifm-color-emphasis-300);
     padding-bottom: 0.75rem;
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    color: var(--ifm-color-primary);
 }
 
 /* --- Editor & Preview Section --- */
@@ -80,32 +62,34 @@ footer {
 }
 
 .toolbar button {
-    background: #eef3f8;
-    color: var(--primary-color);
-    border: 1px solid var(--primary-color);
+    background: var(--ifm-color-emphasis-100);
+    color: var(--ifm-color-primary);
+    border: 1px solid var(--ifm-color-primary);
     padding: 8px 12px;
     font-size: 0.9rem;
 }
 
 .toolbar button:hover {
-    background: #dce6f1;
+    background: var(--ifm-color-emphasis-200);
 }
 
 textarea {
   width: 100%;
   padding: 10px;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--border-color);
+  border-radius: var(--ifm-border-radius);
+  border: 1px solid var(--ifm-color-emphasis-300);
   font-family: inherit;
   font-size: 1rem;
   box-sizing: border-box;
   resize: vertical;
+  background-color: var(--ifm-color-emphasis-0);
+  color: var(--ifm-color-content);
 }
 
 textarea:focus {
   outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(10, 102, 194, 0.2);
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 2px var(--ifm-color-primary-lightest);
 }
 
 .main-editor-textarea {
@@ -114,10 +98,10 @@ textarea:focus {
 
 /* --- Live Post Preview --- */
 .linkedin-post-preview {
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-border-radius);
   padding: 1rem;
-  background-color: #ffffff;
+  background-color: var(--ifm-card-background-color);
 }
 
 .post-header {
@@ -130,7 +114,7 @@ textarea:focus {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: var(--primary-color);
+  background-color: var(--ifm-color-primary);
   margin-right: 12px;
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FFFFFF"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>');
   background-size: 60%;
@@ -150,7 +134,7 @@ textarea:focus {
 
 .post-meta {
   font-size: 0.8rem;
-  color: var(--text-secondary-color);
+  color: var(--ifm-color-content-secondary);
 }
 
 .post-content {
@@ -184,23 +168,23 @@ textarea:focus {
 .output-box {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-border-radius);
   padding: 1rem;
-  background-color: #fafafa;
+  background-color: var(--ifm-color-emphasis-100);
 }
 
 .output-box h3 {
   margin: 0 0 0.5rem 0;
   font-size: 1.1rem;
-  color: var(--text-secondary-color);
+  color: var(--ifm-color-content-secondary);
   font-weight: 600;
 }
 
 .output-textarea {
   min-height: 80px;
-  background-color: #ffffff;
-  border: 1px solid var(--border-color);
+  background-color: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
 }
@@ -209,10 +193,10 @@ button {
   padding: 10px 15px;
   font-size: 1rem;
   font-weight: 600;
-  border-radius: var(--border-radius);
+  border-radius: var(--ifm-border-radius);
   border: none;
   cursor: pointer;
-  background-color: var(--primary-color);
+  background-color: var(--ifm-color-primary);
   color: white;
   transition: background-color 0.2s ease, transform 0.1s ease;
   align-self: flex-end;
@@ -220,7 +204,7 @@ button {
 }
 
 button:hover {
-  background-color: #004182;
+  background-color: var(--ifm-color-primary-dark);
 }
 
 button:active {
