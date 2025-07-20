@@ -83,6 +83,7 @@ const config: Config = {
         {to: '/about', label: 'About', position: 'left'},
         {to: '/blog', label: 'Blog', position: 'left'},
         {to: '/projects', label: 'Projects', position: 'left'},
+        {to: '/tools', label: 'Tools', position: 'left'},
         {to: '/gaming', label: 'Gaming', position: 'left'},
         
         {to: '/contact', label: 'Contact me', position: 'left'},
