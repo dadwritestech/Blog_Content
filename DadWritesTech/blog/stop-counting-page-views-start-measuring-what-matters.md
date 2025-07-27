@@ -13,6 +13,8 @@ It's a total disconnect. We aren't measuring what actually matters. And as long 
 
 That has to change. The only way forward is to adopt the language of performance and value that the rest of the organization already speaks. We can take example from DevOps playbook.
 
+<!--truncate-->
+
 Here's my framework for doing just that by translating DORA's Four Keys for a modern, docs-as-code world.
 
 ## The Four Keys, Retooled for Docs

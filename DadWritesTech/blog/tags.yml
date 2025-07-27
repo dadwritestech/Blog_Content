@@ -14,7 +14,7 @@ test:
   label: Test
   description: "Test posts."
   permalink: /tags/test
-techGuides:
+techguides:
   label: Tech Guides
   description: "Guides and tutorials related to technology."
   permalink: /tags/techguides
@@ -26,3 +26,23 @@ home-networking:
   label: Home Networking
   description: "Guides and insights on home network setup and optimization."
   permalink: /tags/home-networking
+api:
+  label: API
+  description: "API development and testing guides."
+  permalink: /tags/api
+testing:
+  label: Testing
+  description: "Software testing tutorials and best practices."
+  permalink: /tags/testing
+postman:
+  label: Postman
+  description: "Postman API testing guides."
+  permalink: /tags/postman
+automation:
+  label: Automation
+  description: "Automation tools and techniques."
+  permalink: /tags/automation
+documentation:
+  label: Documentation
+  description: "Documentation best practices and tools."
+  permalink: /tags/documentation
