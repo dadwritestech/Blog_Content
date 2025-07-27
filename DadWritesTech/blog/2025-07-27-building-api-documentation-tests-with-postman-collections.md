@@ -3,6 +3,7 @@ slug: building-api-documentation-tests-with-postman-collections
 title: "Building API Documentation Tests with Postman Collections: Complete Guide"
 authors: [DadWritesTech]
 tags: [techguides, api, testing, postman, automation, documentation]
+date: 2025-07-27
 ---
 
 🛠️ Testing API documentation shouldn't be manual guesswork. Here's how to automate validation using Postman Collections with JSONPlaceholder API.
