@@ -7,7 +7,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Dad Writes Tech',
   tagline: 'A Personal Blog.',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/dadwritestech_favicon.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -76,8 +76,8 @@ const config: Config = {
     navbar: {
       title: 'Dad Writes Tech',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: 'Dad Writes Tech Logo',
+        src: 'img/dadwritestech.png',
       },
       items: [
         {to: '/about', label: 'About', position: 'left'},
