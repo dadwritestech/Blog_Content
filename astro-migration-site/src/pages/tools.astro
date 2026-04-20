@@ -1,0 +1,73 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import AnnualMileageCalculator from '../components/tools/AnnualMileageCalculator.jsx';
+import TextFormatter from '../components/tools/TextFormatter.jsx';
+import ContractionTimer from '../components/tools/ContractionTimer.jsx';
+---
+
+<MainLayout title="Tools | DadWritesTech" description="Explore my collection of technical utilities and interactive experiments.">
+  <section class="py-10">
+    <div class="mb-12">
+      <h1 class="text-4xl font-bold mb-4">Technical Tools</h1>
+      <p class="text-lg text-slate-600 dark:text-slate-400">
+        A collection of utilities and experiments built to solve real-world technical challenges.
+      </p>
+    </div>
+
+    <div class="space-y-12">
+      <!-- Tool: Mileage Calculator -->
+      <div class="group p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 shadow-sm hover:shadow-md">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="p-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V5.618a1 1 0 00-.553-.894L16 7m0 10V7m0 0L9 7" />
+            </svg>
+          </div>
+          <h2 class="text-xl font-bold group-hover:text-blue-600 transition-colors">Mileage Calculator</h2>
+        </div>
+        <p class="text-slate-600 dark:text-slate-400 text-sm mb-6">
+          Quickly estimate cost adjustments based on percentage changes in mileage.
+        </p>
+        <div class="pt-4 border-t border-slate-100 dark:border-slate-800">
+          <AnnualMileageCalculator client:load />
+        </div>
+      </div>
+
+      <!-- Tool: Text Formatter -->
+      <div class="group p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 shadow-sm hover:shadow-md">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="p-2 bg-purple-100 dark:bg-purple-900/30 text-purple-600 rounded-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+          </div>
+          <h2 class="text-xl font-bold group-hover:text-purple-600 transition-colors">Text Formatter</h2>
+        </div>
+        <p class="text-slate-600 dark:text-slate-400 text-sm mb-6">
+          Create stylized Unicode text for LinkedIn posts, comments, and profiles.
+        </p>
+        <div class="pt-4 border-t border-slate-100 dark:border-slate-800">
+          <TextFormatter client:load />
+        </div>
+      </div>
+
+      <!-- Tool: Contraction Timer -->
+      <div class="group p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 shadow-sm hover:shadow-md">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="p-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 rounded-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h2 class="text-xl font-bold group-hover:text-emerald-600 transition-colors">Contraction Timer</h2>
+        </div>
+        <p class="text-slate-600 dark:text-slate-400 text-sm mb-6">
+          Track and log uterine contractions with timing, duration, frequency, and intensity.
+        </p>
+        <div class="pt-4 border-t border-slate-100 dark:border-slate-800">
+          <ContractionTimer client:load />
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

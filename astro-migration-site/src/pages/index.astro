@@ -1,0 +1,50 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Home | DadWritesTech" description="Welcome to DadWritesTech - Precision in Documentation. Clarity in Complexity.">
+  <section class="flex flex-col items-center text-center py-20">
+    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-500">
+      DadWritesTech
+    </h1>
+    <p class="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-2xl mb-10">
+      Precision in Documentation. Clarity in Complexity.
+      A space for technical writing, engineering insights, and strategic exploration.
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="/blog" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shadow-blue-600/20">
+        Read the Blog
+      </a>
+      <a href="/tools" class="px-8 py-3 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-100 rounded-full font-semibold transition-all transform hover:scale-105">
+        Explore Tools
+      </a>
+    </div>
+  </section>
+
+  <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+    <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50">
+      <div class="text-blue-600 text-3xl mb-4">✍️</div>
+      <h3 class="text-xl font-bold mb-2">Technical Writing</h3>
+      <p class="text-slate supposed-slate-600 dark:text-slate-400 text-sm">
+        Transforming complex technical architectures into user-centric, actionable documentation.
+      </p>
+    </div>
+
+    <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50">
+      <div class="text-indigo-600 text-3xl mb-4">🛠️</div>
+      <h3 class="text-xl font-bold mb-2">Engineering Tools</h3>
+      <p class="text-slate-600 dark:text-slate-400 text-sm">
+        A collection of utilities and experiments built to solve real-world technical challenges.
+      </p>
+    </div>
+
+    <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50">
+      <div class="text-purple-600 text-3xl mb-4">🎮</div>
+      <h3 class="text-xl font-bold mb-2">Strategic Thinking</h3>
+      <p class="text-slate-600 dark:text-slate-400 text-sm">
+        Drawing parallels between strategic gaming and technical problem-solving.
+      </p>
+    </div>
+  </section>
+</MainLayout>

@@ -1,0 +1,61 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+---
+
+<MainLayout title="Blog | DadWritesTech" description="Read my latest thoughts on technical writing, engineering, and more.">
+  <section class="py-10">
+    <div class="mb-12">
+      <h1 class="text-4xl font-bold mb-4">Blog</h1>
+      <p class="text-lg text-slate-600 dark:text-slate-400">
+        Deep dives into technical documentation, engineering processes, and the art of writing.
+      </p>
+    </div>
+
+    <div class="space-y-12">
+      {
+        (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).map((post) => (
+          <article class="group relative grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 items-start">
+            <div class="flex flex-col gap-2">
+              <time class="text-sm font-medium text-blue-600 dark:text-blue-400" datetime={post.data.pubDate.toISOString()}>
+                {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </time>
+              <div class="flex flex-wrap gap-2">
+                {post.data.tags.map(tag => (
+                  <span class="text-[10px] uppercase tracking-wider font-bold px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <h2 class="text-2xl font-bold group-hover:text-blue-600 transition-colors">
+                <a href={`/blog/${post.slug}`}>
+                  {post.data.title}
+                </a>
+              </h2>
+              <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                {post.data.description}
+              </p>
+              <a href={`/blog/${post.slug}`} class="text-sm font-semibold text-blue-600 hover:underline inline-flex items-center gap-1">
+                Read Article
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+
+      {
+        (await getCollection('blog')).length === 0 && (
+          <div class="text-center py-20 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl">
+            <p class="text-slate-500 italic">No blog posts found. Start migrating your MDX files!</p>
+          </div>
+        )
+      }
+    </div>
+  </section>
+</MainLayout>

@@ -1,0 +1,87 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <!-- Google Analytics 4 -->
+    <script is:inline src="https://www.googletagmanager.com/gtag/js?id=G-L1NH30EXTT" async></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-L1NH30EXTT');
+    </script>
+
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.dad-writes-tech.com/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Dark mode: sync to html class before first paint -->
+    <script is:inline>
+      (function() {
+        const stored = localStorage.getItem('theme');
+        if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+    <nav class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
+      <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+        <a href="/" class="font-bold text-xl tracking-tight">DadWritesTech</a>
+        <div class="flex items-center gap-6 text-sm font-medium">
+          <!-- Dark mode toggle -->
+          <button id="theme-toggle" type="button" class="p-1 hover:text-blue-600 transition-colors flex items-center gap-2" aria-label="Toggle dark mode">
+            <svg class="sun-icon w-5 h-5 hidden dark:block text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+            <svg class="moon-icon w-5 h-5 block dark:hidden text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+          </button>
+
+          <a href="/blog" class="hover:text-blue-600 transition-colors">Blog</a>
+          <a href="/projects" class="hover:text-blue-600 transition-colors">Projects</a>
+          <a href="/tools" class="hover:text-blue-600 transition-colors">Tools</a>
+          <a href="/gaming" class="hover:text-blue-600 transition-colors">Gaming</a>
+          <a href="/contact" class="hover:text-blue-600 transition-colors">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <script is:inline>
+      const toggle = document.getElementById('theme-toggle');
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          const dark = document.documentElement.classList.toggle('dark');
+          localStorage.setItem('theme', dark ? 'dark' : 'light');
+        });
+      }
+    </script>
+
+    <main class="container mx-auto px-4 py-12 min-h-screen">
+      <slot />
+    </main>
+
+    <footer class="border-t border-slate-200 dark:border-slate-800 py-12 bg-slate-50 dark:bg-slate-900/50">
+      <div class="container mx-auto px-4 text-center text-sm text-slate-500">
+        <p>&copy; {new Date().getFullYear()} DadWritesTech. Built with Astro & Tailwind.</p>
+      </div>
+    </footer>
+  </body>
+</html>

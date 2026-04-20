@@ -1,0 +1,33 @@
+---
+// Everything below must be inside the triple-dashes
+import { getCollection } from 'astro:content';
+
+export const prerender = true;
+
+const blogEntries = await getCollection('blog');
+const sorted = blogEntries.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const SITE = 'https://www.dad-writes-tech.com';
+
+const items = sorted.map(entry => {
+  const pubDate = entry.data.pubDate.toUTCString();
+  return `    <item>
+      <title>${entry.data.title}</title>
+      <link>${SITE}/blog/${entry.slug}/</link>
+      <description>${entry.data.description}</description>
+      <pubDate>${pubDate}</pubDate>
+      <guid>${SITE}/blog/${entry.slug}/</guid>
+    </item>`;
+}).join('\n');
+---
+
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DadWritesTech</title>
+    <link>{SITE}</link>
+    <description>Tech tips, guides, and practical advice for dads and tech enthusiasts</description>
+    <atom:link href="{SITE}/rss.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    {items}
+  </channel>
+</rss>
