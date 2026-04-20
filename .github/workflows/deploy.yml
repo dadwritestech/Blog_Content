@@ -1,4 +1,4 @@
-name: Deploy Docusaurus site to GitHub Pages
+name: Deploy Astro site to GitHub Pages
 
 on:
   push:
@@ -17,23 +17,20 @@ jobs:
         with:
           node-version: 18
           cache: npm
-          cache-dependency-path: ./DadWritesTech/package-lock.json
-
-      - name: List DadWritesTech contents
-        run: ls -l ./DadWritesTech
+          cache-dependency-path: ./astro-migration-site/package-lock.json
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./DadWritesTech
+        working-directory: ./astro-migration-site
 
-      - name: Build Docusaurus website
+      - name: Build Astro website
         run: npm run build
-        working-directory: ./DadWritesTech
+        working-directory: ./astro-migration-site
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           external_repository: dadwritestech/blog
           personal_token: ${{ secrets.DEPLOY_TOKEN }}
-          publish_dir: ./DadWritesTech/public
+          publish_dir: ./astro-migration-site/dist
           cname: www.dad-writes-tech.com
