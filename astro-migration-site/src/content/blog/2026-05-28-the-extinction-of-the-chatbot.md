@@ -4,7 +4,7 @@ title: "The Chatbot Is Dead. Here's What Google Just Built to Replace It."
 description: "Google I/O 2026 didn't announce a better chatbot. It announced something that works while you sleep. Here's what's real, what's vaporware, and what you should actually care about."
 authors: [DadWritesTech]
 tags: [ai, google-io, techguide, agentic-ai, gemini]
-date: 2026-05-28
+pubDate: 2026-05-28
 ---
 
 Google didn't just update its search bar at I/O 2026. It killed the chatbot you've been using for the last three years and replaced it with something that works while you sleep.
